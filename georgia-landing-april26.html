@@ -820,6 +820,7 @@ body {
   padding: 1.25rem 0.5rem 0;
   width: 100%; max-width: 1080px;
 }
+.desk-line--inner { display: none; }
 .desk-br, .desk-year {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px; font-weight: 400;
@@ -2095,6 +2096,15 @@ body {
   /* Chassi ocupa tela inteira no mobile */
   #page { padding: 0; }
   .device { border-radius: 0; background: var(--chassis); max-width: 100%; }
+
+  /* desk-line: esconde externa, mostra interna com cor do chassi */
+  .desk-line:not(.desk-line--inner) { display: none; }
+  .desk-line--inner {
+    display: flex;
+    padding: 1rem 1.5rem 1.25rem;
+  }
+  .desk-line--inner .desk-br,
+  .desk-line--inner .desk-year { color: var(--text-main); }
 }
 
 /* ── MODAL ── */
@@ -2483,6 +2493,13 @@ body {
           <span class="foot-btn-label" data-i18n="footer.terms">termos de uso</span>
         </div>
       </div>
+    </div>
+
+    <!-- BR LINE — mobile only, inside chassis -->
+    <div class="desk-line desk-line--inner">
+      <span class="desk-br">br</span>
+      <div class="desk-grad-line"></div>
+      <span class="desk-year">mmxxvi</span>
     </div>
 
   </div><!-- /device -->
