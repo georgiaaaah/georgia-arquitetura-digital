@@ -137,7 +137,11 @@ body {
 .device {
   width: 100%;
   max-width: 1080px;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 0%   0%,   var(--bg) 16px, var(--chassis) 16.5px),
+    radial-gradient(circle at 100% 0%,   var(--bg) 16px, var(--chassis) 16.5px),
+    radial-gradient(circle at 0%   100%, var(--bg) 16px, var(--chassis) 16.5px),
+    radial-gradient(circle at 100% 100%, var(--bg) 16px, var(--chassis) 16.5px);
   border-radius: 16px;
   position: relative;
   overflow: hidden;
