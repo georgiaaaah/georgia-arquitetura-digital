@@ -1,0 +1,32 @@
+Política de Privacidade
+Na geōrgia, a transparência é o pilar da nossa tecnologia. Esta política descreve como tratamos os dados coletados neste site para garantir uma presença digital segura e intencional.
+
+1. Coleta de Dados e Finalidade
+Tratamos apenas os dados estritamente necessários para a execução dos nossos serviços:
+
+Comunicação Direta: Ao utilizar os links de WhatsApp para iniciar um projeto, os dados fornecidos (nome e número de telefone) são utilizados exclusivamente para o atendimento inicial, suporte e elaboração de propostas comerciais.
+
+Sem Marketing Indesejado: Não utilizamos os seus dados de contacto para listas de transmissão, envio de newsletters ou qualquer outra finalidade de marketing sem o seu consentimento explícito e separado.
+
+2. Base Legal para o Tratamento
+O tratamento dos seus dados fundamenta-se no seu consentimento ao iniciar voluntariamente a conversa pelos nossos canais, e em procedimentos preliminares relacionados a contrato, visando atender às suas solicitações de orçamento e consultoria.
+
+3. Uso de Tecnologias de Interface (Cookies e LocalStorage)
+Para que a sua experiência de navegação seja personalizada e funcional, utilizamos armazenamento local (localStorage) para:
+
+Salvar a sua preferência de idioma (pt ou en).
+
+Memorizar a sua escolha de tema de interface (Dark ou Light).
+Estas são tecnologias estritamente funcionais e não rastreiam o seu comportamento em outros sites.
+
+4. Direitos do Usuário (Acesso e Exclusão)
+Em conformidade com as leis de proteção de dados (LGPD/RGPD), você possui o direito de:
+
+Solicitar a confirmação da existência de tratamento de dados.
+
+Solicitar a exclusão definitiva dos seus dados de contato de nossa base a qualquer momento. Para isso, basta enviar uma mensagem através do nosso WhatsApp com o termo "Remover Dados".
+
+5. Segurança e Compartilhamento
+Os seus dados não são vendidos, alugados ou partilhados com terceiros. As conversas via WhatsApp são protegidas por criptografia de ponta a ponta pela plataforma Meta. Internamente, adotamos medidas técnicas para garantir que apenas as pessoas necessárias para o seu projeto tenham acesso às informações partilhadas.
+
+Última atualização: Abril de 2026.

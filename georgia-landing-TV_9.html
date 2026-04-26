@@ -1,0 +1,3007 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>geōrgia. — presença digital construída com intenção</title>
+
+<!-- SEO -->
+<meta name="description" content="oi, eu sou geōrgia. faço seu site ou produto digital sob medida — estratégia, design e tecnologia, cada detalhe calibrado pra o que você precisa comunicar.">
+<meta name="author" content="geōrgia">
+<meta name="theme-color" content="#f0f1f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="geōrgia. — presença digital construída com intenção">
+<meta property="og:description" content="sites, landing pages, e-commerce e produtos digitais sob medida. estratégia · design · tecnologia.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="geōrgia. arquitetura digital — websites e produtos digitais.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="geōrgia. — presença digital construída com intenção">
+<meta name="twitter:description" content="sites, landing pages, e-commerce e produtos digitais sob medida.">
+<meta name="twitter:image" content="og-cover.png">
+<meta name="twitter:image:alt" content="geōrgia. arquitetura digital — websites e produtos digitais.">
+
+<!-- Favicons (alternam com light/dark do navegador) -->
+<link rel="icon" type="image/svg+xml" href="favicon-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="favicon-dark.svg" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="favicon-light.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@200;300;400;600;700&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0a0a;
+  --chassis:   #f0f1f1;
+  --chassis-2: #e8e9e9;
+  --chassis-3: #dddede;
+  --wood:      #b5651d;
+  --divider:   rgba(0,0,0,0.12);
+  --text-main: #2e2a2a;
+  --text-mid:  #4a4646;
+  --text-soft: #6a6464;
+  --teal:      #08ECF3;
+  --teal-glow: rgba(8,236,243,0.6);
+  --wa-green:  #25D366;
+  --grad-a:    #FFAA00;
+  --grad-b:    #DE0538;
+  --grad-c:    #08ECF3;
+  --gradient:  linear-gradient(90deg, #FFAA00, #DE0538, #08ECF3);
+  --wood-w:    28px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Epilogue', sans-serif;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 72px 72px;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ────────────────────────────────────────
+   LOADER
+──────────────────────────────────────── */
+#loader {
+  position: fixed; inset: 0;
+  z-index: 200;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 24px;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+#loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.loader-counter {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(64px, 12vw, 120px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: #f0f1f1;
+  line-height: 1;
+  display: flex; align-items: baseline; gap: 4px;
+}
+.loader-counter .pct {
+  font-size: 0.35em; opacity: 0.4;
+  transform: translateY(-0.4em); letter-spacing: 0;
+}
+.loader-track {
+  width: min(260px, 65vw); height: 1px;
+  background: rgba(240,241,241,0.1);
+  position: relative; overflow: hidden;
+}
+.loader-fill {
+  position: absolute; inset: 0; width: 0%;
+  background: var(--gradient);
+}
+.loader-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(240,241,241,0.3);
+}
+
+
+
+/* ────────────────────────────────────────
+   PAGE
+──────────────────────────────────────── */
+#page {
+  position: relative; z-index: 2;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  padding: 2.5rem 1.5rem 3rem;
+  min-height: 100dvh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+}
+#page.enter { opacity: 1; transform: translateY(0); }
+
+/* ────────────────────────────────────────
+   MAIN CHASSIS — o aparelho inteiro
+──────────────────────────────────────── */
+.device {
+  width: 100%;
+  max-width: 1080px;
+  background: var(--bg);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+
+  /* Heavy physical object on dark desk */
+  box-shadow:
+    0 60px 120px rgba(0,0,0,0.85),
+    0 20px 40px rgba(0,0,0,0.5),
+    0 2px 0 rgba(255,255,255,0.95) inset,
+    0 -2px 0 rgba(0,0,0,0.2) inset;
+}
+
+/* Wood flanks */
+.device::before,
+.device::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: var(--wood-w);
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(90deg,
+      rgba(255,255,255,0.04) 0px,
+      rgba(0,0,0,0.07) 1px,
+      rgba(0,0,0,0.1) 3px,
+      transparent 4px),
+    linear-gradient(to bottom,
+      rgba(255,255,255,0.15) 0%,
+      rgba(0,0,0,0.5) 100%);
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.95);
+  z-index: 20;
+}
+.device::before { left: 0; border-right: 2px solid rgba(0,0,0,0.3); }
+.device::after  { right: 0; border-left:  2px solid rgba(0,0,0,0.3); }
+
+/* ────────────────────────────────────────
+   PANEL HEADER — logo + wa + tagline
+──────────────────────────────────────── */
+.panel-header {
+  padding: 2rem 3.5rem;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  background: var(--chassis);
+}
+
+/* Subtle top-edge highlight */
+.panel-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: var(--wood-w); right: var(--wood-w);
+  height: 1px;
+  background: rgba(255,255,255,0.9);
+}
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+.logo-wrap {
+  width: clamp(180px, 25vw, 300px);
+}
+.logo-wrap svg {
+  width: 100%; height: auto; display: block;
+}
+.tagline-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem; font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: var(--text-soft);
+  padding-left: 2px;
+  width: 100%;
+}
+
+/* ── WA BUTTON — chassis style ── */
+.wa-zone {
+  display: flex; flex-direction: row;
+  align-items: flex-end; gap: 1.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.wa-btn {
+  width: 56px; height: 56px;
+  border-radius: 6px;
+  background: linear-gradient(145deg, var(--chassis), var(--chassis-2));
+  border: 1px solid rgba(0,0,0,0.14);
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  box-shadow:
+    0 4px 0 rgba(0,0,0,0.18),
+    0 6px 12px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.05s ease-out;
+  position: relative;
+}
+.wa-btn::after {
+  content: "";
+  position: absolute;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 30px; height: 6px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 3px;
+  filter: blur(3px);
+  pointer-events: none;
+}
+.wa-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 0 rgba(0,0,0,0.18),
+    0 8px 16px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
+}
+.wa-btn:active {
+  transform: translateY(3px);
+  border-bottom-width: 1px;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.1),
+    0 2px 4px rgba(0,0,0,0.1),
+    inset 0 1px 3px rgba(0,0,0,0.08);
+}
+.wa-btn svg {
+  width: 24px; height: 24px;
+  fill: var(--wa-green);
+  position: relative; z-index: 1;
+}
+
+/* ── WA GROUP: button + status side by side ── */
+.wa-group {
+  display: flex; flex-direction: row;
+  align-items: center; gap: 14px;
+}
+
+/* ── LED STATUS INDICATOR ── */
+.wa-status {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+.led-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    #6eff9a 0%,
+    var(--wa-green) 45%,
+    #1a8a3a 100%);
+  box-shadow:
+    0 0 6px 2px rgba(37,211,102,0.55),
+    0 0 12px 4px rgba(37,211,102,0.2),
+    inset 0 -1px 1px rgba(0,0,0,0.3);
+  animation: led-pulse 2.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes led-pulse {
+  0%, 85%, 100% {
+    background: radial-gradient(circle at 35% 35%,
+      #3ecf6a 0%, #1a9e45 45%, #0f5c28 100%);
+    box-shadow:
+      0 0 5px 2px rgba(20,140,55,0.55),
+      0 0 10px 3px rgba(20,140,55,0.18),
+      inset 0 -1px 1px rgba(0,0,0,0.4);
+    opacity: 1;
+  }
+  91%, 95% {
+    background: radial-gradient(circle at 35% 35%,
+      #1a3a22 0%, #0d2214 45%, #060e09 100%);
+    box-shadow:
+      0 0 1px 0px rgba(37,211,102,0.1),
+      inset 0 -1px 1px rgba(0,0,0,0.5);
+    opacity: 0.35;
+  }
+}
+
+/* desktop/mobile visibility */
+.desktop-only { display: flex; }
+.mobile-only  { display: none; }
+
+/* Desktop: WA centered in hero, sticker hidden from hero */
+@media (min-width: 769px) {
+  .panel-hero-copy .wa-zone.mobile-only {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem auto;
+  }
+  .panel-hero-copy .sticker-wrap { display: none; }
+  .header-right-desktop { display: flex; align-items: center; }
+  .lang-slot { align-self: center; margin: 0; }
+  .sticker-header {
+    transform: rotate(-2deg);
+    margin-right: 1rem;
+  }
+}
+/* ────────────────────────────────────────
+   TAGLINE STRIP — between header and LED panel
+──────────────────────────────────────── */
+
+
+/* ────────────────────────────────────────
+   LED DISPLAY PANEL — marquee
+──────────────────────────────────────── */
+.panel-led {
+  margin: 2.5rem 3.5rem;
+  border-radius: 8px;
+  background: #060708;
+  border-top: 3px solid #0a0a0a;
+  border-left: 3px solid #0d0d0d;
+  border-right: 3px solid #0d0d0d;
+  border-bottom: 2px solid #1e1e1e;
+  overflow: hidden;
+  box-shadow:
+    inset 0 8px 20px rgba(0,0,0,0.95),
+    inset 0 0 40px rgba(0,0,0,0.6),
+    inset 40px 0 40px rgba(0,0,0,0.5),
+    inset -40px 0 40px rgba(0,0,0,0.5),
+    /* borda superior escura — sombra da chapa sobre o display */
+    inset 0 3px 0 rgba(0,0,0,0.6),
+    /* borda inferior clara — luz refletida na borda inferior da ranhura */
+    inset 0 -1px 0 rgba(255,255,255,0.08),
+    /* bordas laterais da ranhura */
+    inset 3px 0 6px rgba(0,0,0,0.4),
+    inset -3px 0 6px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* CRT scanlines overlay */
+.panel-led::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 4px,
+    rgba(0,0,0,0.18) 4px,
+    rgba(0,0,0,0.18) 5px
+  );
+  z-index: 3; pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Glass glint top */
+.panel-led::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,0.05) 0%,
+    transparent 100%);
+  z-index: 2; pointer-events: none;
+}
+
+.led-track-wrap {
+  overflow: hidden;
+  padding: 1rem 0;
+  position: relative; z-index: 1;
+}
+.led-track {
+  display: flex; gap: 0;
+  animation: led-scroll 75s linear infinite;
+  width: max-content;
+}
+@media (max-width: 768px) {
+  .led-track { animation-duration: 110s; }
+}
+@keyframes led-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.led-item {
+  display: flex; align-items: center;
+  padding: 0 2.5rem;
+  white-space: nowrap;
+}
+.led-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.1rem; font-weight: 400;
+  letter-spacing: 0.12em;
+  color: #08ECF3;
+  text-shadow:
+    0 0 3px rgba(8,236,243,1),
+    0 0 8px rgba(8,236,243,0.85),
+    0 0 18px rgba(8,236,243,0.5),
+    0 0 35px rgba(8,236,243,0.2);
+}
+.led-sep {
+  width: 20px; text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(8,236,243,0.25);
+  text-shadow: 0 0 6px rgba(8,236,243,0.2);
+  align-self: center;
+}
+
+/* ────────────────────────────────────────
+   HERO COPY — below LED panel
+──────────────────────────────────────── */
+.panel-hero-copy {
+  padding: 0.5rem 3.5rem 0;
+  border-top: 1px solid var(--divider);
+  background: var(--chassis);
+  display: flex;
+  flex-direction: column;
+}
+.hero-copy-desktop {
+  display: block;
+  text-align: center;
+}
+.hero-copy-mobile {
+  display: none;
+  text-align: center;
+}
+.panel-hero-copy .wa-zone {
+  margin-bottom: 1.75rem;
+  justify-content: center;
+}
+
+/* HERO QR — desktop only, ao lado do WA na hero */
+.hero-qr {
+  display: none;
+  align-items: center;
+  gap: 0.85rem;
+  margin-left: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(0,0,0,0.10);
+}
+@media (min-width: 769px) {
+  .hero-qr { display: inline-flex; }
+}
+.hero-qr-img {
+  width: 64px; height: 64px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.18);
+  display: block;
+  padding: 6px;
+  box-sizing: border-box;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.06),
+    0 2px 5px rgba(0,0,0,0.10),
+    inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+.hero-qr-img svg {
+  display: block;
+  width: 100%; height: 100%;
+}
+.hero-qr-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  word-spacing: -0.15em;
+  color: var(--text-soft);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.hero-qr-label .qr-wa-mini {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  color: inherit;
+}
+.hero-qr-label .qr-wa-mini path {
+  fill: currentColor;
+}
+
+/* ────────────────────────────────────────
+   DIVISÓRIA — separador entre zonas
+──────────────────────────────────────── */
+.divisoria {
+  height: 12px;
+  background: var(--chassis-3);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.08),
+    inset 0 -1px 0 rgba(255,255,255,0.6);
+  position: relative;
+}
+/* Screw detail on divisória */
+.divisoria::before,
+.divisoria::after {
+  content: "·";
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  font-size: 8px; color: rgba(0,0,0,0.2);
+  line-height: 1;
+}
+.divisoria::before { left: 3.5rem; }
+.divisoria::after  { right: 3.5rem; }
+
+/* ────────────────────────────────────────
+   SERVICES PANEL
+──────────────────────────────────────── */
+.panel-section {
+  padding: 2.5rem 3.5rem;
+  background: var(--chassis);
+}
+.panel-section + .panel-section {
+  border-top: 1px solid var(--divider);
+}
+
+.section-label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: lowercase;
+  /* Engraved into chassis plate */
+  color: rgba(0,0,0,0.35);
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.95),
+    0 -1px 0 rgba(0,0,0,0.12);
+  margin-bottom: 1.75rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.18);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 3px 8px rgba(0,0,0,0.14),
+    inset 0 1px 3px rgba(0,0,0,0.1),
+    0 1px 0 rgba(255,255,255,0.8);
+}
+.service-item {
+  background: #eaecec;
+  padding: 1.5rem 1.5rem;
+  position: relative; overflow: hidden;
+  transition: background 0.2s ease;
+  cursor: default;
+}
+.service-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+.service-item:hover { background: var(--chassis-2); }
+.service-item:hover::after { transform: scaleX(1); }
+
+.service-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  margin-bottom: 0.6rem;
+  opacity: 0.6;
+}
+.service-name {
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.88rem; font-weight: 400;
+  color: var(--text-main); line-height: 1.4;
+}
+
+/* ────────────────────────────────────────
+   FLOW PANEL
+──────────────────────────────────────── */
+.flow-steps {
+  display: flex; flex-direction: column;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  cursor: default;
+}
+.flow-step:last-child { border-bottom: none; }
+
+/* LED box */
+.step-led-box {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Engraved square */
+.step-led-square {
+  width: 34px; height: 34px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1.5px solid rgba(0,0,0,0.16);
+  background: #e0e2e2;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.14),
+    inset 0 1px 2px rgba(0,0,0,0.08),
+    0 1px 0 rgba(255,255,255,0.85);
+  transition: border-color 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
+}
+
+/* Number */
+.step-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(0,0,0,0.5);
+  transition: color 0.08s ease, text-shadow 0.08s ease;
+  position: relative; z-index: 1;
+  line-height: 1;
+}
+
+/* LED glow behind square */
+.step-led-square::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9px;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(255,170,0,0.45) 0%, transparent 68%);
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ON state — only via is-active (play/stop + scroll) */
+.flow-step.is-active .step-led-square {
+  border-color: rgba(255,170,0,0.8);
+  background: rgba(255,170,0,0.1);
+  box-shadow:
+    inset 0 0 12px rgba(255,170,0,0.3),
+    0 0 10px 3px rgba(255,170,0,0.22),
+    0 0 22px 7px rgba(255,170,0,0.08),
+    0 1px 0 rgba(255,255,255,0.8);
+}
+.flow-step.is-active .step-led-square::before {
+  opacity: 1;
+}
+.flow-step.is-active .step-num {
+  color: #FFAA00;
+  text-shadow:
+    0 0 6px rgba(255,170,0,0.9),
+    0 0 14px rgba(255,170,0,0.5);
+}
+
+/* Step content */
+.step-content {
+  flex: 1;
+}
+.step-text {
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.88rem; font-weight: 300;
+  color: var(--text-mid); line-height: 1.6;
+}
+.step-text strong {
+  font-weight: 500; color: var(--text-main);
+}
+
+/* ────────────────────────────────────────
+   FOOTER STRIP
+──────────────────────────────────────── */
+.panel-footer {
+  padding: 1.25rem 3.5rem;
+  background: var(--chassis-2);
+  border-top: 1px solid var(--divider);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.footer-wordmark {
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.88rem; font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+.footer-rights {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+}
+
+/* Analogue button groups */
+.footer-btns {
+  display: flex; align-items: center; gap: 1.5rem;
+}
+.footer-btn-group {
+  display: flex; align-items: center; gap: 0.65rem;
+}
+.foot-btn {
+  width: 36px; height: 36px;
+  border-radius: 4px;
+  background: linear-gradient(145deg, var(--chassis), var(--chassis-2));
+  border: 1px solid rgba(0,0,0,0.14);
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  box-shadow:
+    0 3px 0 rgba(0,0,0,0.15),
+    0 4px 8px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,1);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-mid);
+  transition: all 0.05s ease-out;
+  flex-shrink: 0;
+}
+.foot-btn svg {
+  width: 15px; height: 15px;
+  stroke: var(--text-mid);
+}
+.foot-btn:hover {
+  background: linear-gradient(145deg, var(--chassis-2), var(--chassis-3));
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 0 rgba(0,0,0,0.15),
+    0 6px 10px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.foot-btn:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow:
+    0 0 0 rgba(0,0,0,0.1),
+    0 1px 2px rgba(0,0,0,0.08),
+    inset 0 1px 2px rgba(0,0,0,0.07);
+}
+.foot-btn-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+/* ── DESK LINE — outside chassis ── */
+.desk-line {
+  display: flex; align-items: center;
+  padding: 1.25rem 0.5rem 0;
+  width: 100%; max-width: 1080px;
+}
+.desk-br, .desk-year {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: none;
+  color: rgba(255,255,255,1);
+}
+.desk-grad-line {
+  flex: 1; height: 1px;
+  background: var(--gradient);
+  margin: 0 1.25rem;
+  opacity: 0.75;
+}
+
+/* ────────────────────────────────────────
+   CTA BUTTON
+──────────────────────────────────────── */
+.panel-cta {
+  padding: 2rem 3.5rem 2.5rem;
+  background: var(--chassis-2);
+  border-top: 1px solid var(--divider);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+}
+
+.cta-cluster {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+}
+
+/* Badge — round holographic sticker */
+.cta-badge {
+  position: relative;
+  transform: rotate(10deg);
+  filter:
+    drop-shadow(1.5px 2.5px 2px rgba(0,0,0,0.22))
+    drop-shadow(0.5px 1px 0px rgba(0,0,0,0.16))
+    drop-shadow(-0.5px -0.3px 0.5px rgba(0,0,0,0.04));
+  flex-shrink: 0;
+}
+
+.cta-badge-body {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(
+    120deg,
+    #e0f0f8 0%,
+    #f0d8f0 18%,
+    #f8f0c8 34%,
+    #c8f0e8 50%,
+    #f0c8d8 66%,
+    #d8c8f8 82%,
+    #c8e8f8 100%
+  );
+  border: 2.5px solid rgba(0,0,0,0.2);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  animation: holo-shift 6s ease-in-out infinite alternate;
+}
+
+/* Inner ring */
+.cta-badge-body::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(10,8,20,0.6);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Foil shimmer */
+.cta-badge-body::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(
+      100deg,
+      rgba(255,255,255,0.0) 0px,
+      rgba(255,255,255,0.3) 1px,
+      rgba(255,255,255,0.0) 2px,
+      rgba(255,255,255,0.0) 4px
+    ),
+    linear-gradient(135deg,
+      rgba(255,255,255,0.35) 0%,
+      rgba(255,255,255,0.0) 50%,
+      rgba(255,255,255,0.15) 100%
+    );
+  mix-blend-mode: overlay;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cta-badge-noise { display: none; }
+
+.cta-badge-text {
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0d0d1a;
+  text-align: center;
+  position: relative; z-index: 3;
+  line-height: 1.2;
+}
+
+/* Small peel on badge */
+.cta-badge-peel {
+  position: absolute;
+  bottom: -3px; right: 2px;
+  width: 14px; height: 10px;
+  background: linear-gradient(130deg,
+    #ccc8d8 0%, #e4e0f0 50%, transparent 100%);
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+  box-shadow: -1px -1px 3px rgba(0,0,0,0.12);
+  z-index: 10;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 2.25rem;
+  background: linear-gradient(145deg, var(--chassis), var(--chassis-2));
+  border: 1px solid rgba(0,0,0,0.14);
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow:
+    0 4px 0 rgba(0,0,0,0.16),
+    0 6px 14px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,1);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.05s ease-out;
+}
+.cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 0 rgba(0,0,0,0.16),
+    0 8px 18px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.cta-btn:active {
+  transform: translateY(3px);
+  border-bottom-width: 1px;
+  box-shadow:
+    0 0 0 rgba(0,0,0,0.1),
+    0 1px 3px rgba(0,0,0,0.08),
+    inset 0 1px 2px rgba(0,0,0,0.07);
+}
+.cta-led {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: radial-gradient(circle at 35% 35%,
+    #3ecf6a 0%, #1a9e45 45%, #0f5c28 100%);
+  box-shadow:
+    0 0 5px 2px rgba(20,140,55,0.55),
+    0 0 10px 3px rgba(20,140,55,0.18),
+    inset 0 -1px 1px rgba(0,0,0,0.4);
+  animation: led-pulse 2.8s ease-in-out infinite;
+}
+.cta-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--text-main);
+}
+
+/* ────────────────────────────────────────
+   STICKER — product label style
+──────────────────────────────────────── */
+.panel-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sticker-wrap {
+  padding: 2.5rem 0 2.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sticker {
+  position: relative;
+  display: inline-block;
+  transform: rotate(-1deg);
+  position: relative;
+  /* Asymmetric, "stuck" shadow — adesivo colado, não flutuante.
+     Sombra curta e dura, com mínimo offset vertical. */
+  filter:
+    drop-shadow(1.5px 2.5px 2px rgba(0,0,0,0.22))
+    drop-shadow(0.5px 1px 0px rgba(0,0,0,0.16))
+    drop-shadow(-0.5px -0.3px 0.5px rgba(0,0,0,0.04));
+}
+
+/* Tiny corner lift — fakes adhesive peeling at the bottom-left edge */
+.sticker::before {
+  content: "";
+  position: absolute;
+  left: 4px; bottom: 1px;
+  width: 28px; height: 8px;
+  background: linear-gradient(
+    to bottom right,
+    transparent 40%,
+    rgba(0,0,0,0.18) 60%,
+    rgba(0,0,0,0.06) 100%
+  );
+  border-radius: 0 0 14px 14px;
+  filter: blur(2px);
+  transform: skewY(2deg);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Outer border — the thick rounded frame */
+.sticker-body {
+  position: relative;
+  padding: 1.1rem 2.2rem 1rem;
+  /* Metallic holographic base — silver + rainbow */
+  background:
+    linear-gradient(
+      115deg,
+      #e8e0f0 0%,
+      #c0d8f8 8%,
+      #b8f0e8 18%,
+      #e0f0b8 28%,
+      #f8e0c0 38%,
+      #f0c8d8 48%,
+      #d8c0f8 58%,
+      #b8e0f8 68%,
+      #c8f8e0 78%,
+      #f0e8b8 88%,
+      #e8c8f0 100%
+    );
+  border-radius: 18px;
+  overflow: hidden;
+  animation: holo-shift 6s ease-in-out infinite alternate;
+}
+
+@keyframes holo-shift {
+  0%   { filter: hue-rotate(0deg)   brightness(1.1) saturate(1.4) contrast(1.05); }
+  25%  { filter: hue-rotate(60deg)  brightness(1.15) saturate(1.5) contrast(1.08); }
+  50%  { filter: hue-rotate(-45deg) brightness(1.12) saturate(1.45) contrast(1.06); }
+  75%  { filter: hue-rotate(90deg)  brightness(1.08) saturate(1.35) contrast(1.04); }
+  100% { filter: hue-rotate(-20deg) brightness(1.1) saturate(1.4) contrast(1.05); }
+}
+
+/* Inner border — dark, same tone as text */
+.sticker-body::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 11px;
+  border: 2px solid rgba(10,8,20,0.75);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Metallic foil texture — dense lines + silver sheen */
+.sticker-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      100deg,
+      rgba(255,255,255,0.0)  0px,
+      rgba(255,255,255,0.35) 1px,
+      rgba(255,255,255,0.0)  2px,
+      rgba(255,255,255,0.0)  4px
+    ),
+    repeating-linear-gradient(
+      10deg,
+      rgba(255,255,255,0.0)  0px,
+      rgba(255,255,255,0.15) 1px,
+      rgba(255,255,255,0.0)  2px,
+      rgba(255,255,255,0.0)  5px
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.4) 0%,
+      rgba(255,255,255,0.0) 40%,
+      rgba(255,255,255,0.2) 60%,
+      rgba(255,255,255,0.0) 100%
+    );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+
+.sticker-noise { display: none; }
+
+/* Headline — uppercase Epilogue */
+.sticker .sticker-title {
+  font-family: 'Epilogue', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0d0d1a !important;
+  text-align: center;
+  display: block;
+  position: relative; z-index: 1;
+  margin-bottom: 0.3rem;
+}
+
+/* Subline — sentence case */
+.sticker .sticker-sub {
+  font-family: 'Epilogue', sans-serif !important;
+  font-size: 0.63rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.06em;
+  color: #1a1828 !important;
+  text-align: center;
+  display: block;
+  position: relative; z-index: 1;
+  line-height: 1.55 !important;
+  opacity: 0.85;
+}
+
+/* hide old p tags — replaced by spans */
+.sticker p { display: none !important; }
+
+/* ── STICKER DEFECTS ── */
+
+/* SVG scratches overlay */
+.sticker-scratches {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: 20;
+  pointer-events: none;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Bottom-left corner peeling */
+.sticker-peel-bl {
+  position: absolute;
+  bottom: -4px;
+  left: -2px;
+  width: 32px;
+  height: 26px;
+  z-index: 30;
+  /* Folded corner — back of sticker is lighter/white */
+  background: linear-gradient(
+    128deg,
+    #d8d0e0 0%,
+    #ece8f2 35%,
+    rgba(230,225,240,0.4) 65%,
+    transparent 100%
+  );
+  clip-path: polygon(0% 100%, 100% 0%, 78% 28%, 22% 78%);
+  box-shadow: 2px -2px 5px rgba(0,0,0,0.2);
+  transform: rotate(0.5deg);
+}
+
+/* Shadow cast by peeling corner onto chassis */
+.sticker-peel-shadow {
+  position: absolute;
+  bottom: -8px;
+  left: 4px;
+  width: 28px;
+  height: 14px;
+  background: rgba(0,0,0,0.18);
+  filter: blur(4px);
+  border-radius: 50%;
+  z-index: 5;
+  transform: rotate(-3deg) skewX(-15deg);
+}
+
+/* Top-right micro lift */
+.sticker-peel-tr {
+  position: absolute;
+  top: -2px;
+  right: 6px;
+  width: 18px;
+  height: 12px;
+  z-index: 30;
+  background: linear-gradient(
+    220deg,
+    #dcd4ec 0%,
+    #eeeaf6 40%,
+    rgba(230,225,240,0.3) 70%,
+    transparent 100%
+  );
+  clip-path: polygon(100% 0%, 0% 0%, 28% 68%, 72% 32%);
+  box-shadow: -1px 1px 3px rgba(0,0,0,0.15);
+}
+
+/* ────────────────────────────────────────
+   SERVICES HEADER + MODE TOGGLE
+──────────────────────────────────────── */
+.services-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+.services-header .section-label {
+  margin-bottom: 0;
+}
+
+/* ── ROCKER SWITCH ── */
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--text-main);
+  opacity: 0.55;
+}
+
+/* Recessed oval well in chassis */
+.rocker-base {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  border-radius: 13px;
+  background: var(--chassis-3);
+  border: 1px solid rgba(0,0,0,0.22);
+  box-shadow:
+    inset 0 3px 7px rgba(0,0,0,0.28),
+    inset 0 1px 3px rgba(0,0,0,0.18),
+    0 1px 0 rgba(255,255,255,0.75);
+}
+
+/* The rocker — a cylinder lying in the well, pivoting */
+.rocker-arm {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  /* Steel cylinder top-view */
+  background: radial-gradient(
+    ellipse at 38% 32%,
+    #f0f2f4 0%,
+    #d0d6dc 25%,
+    #b0b8c2 55%,
+    #8a94a0 80%,
+    #707c88 100%
+  );
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.4),
+    0 1px 0 rgba(255,255,255,0.55) inset;
+  transition: left 0.2s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* Knurled centre dot */
+.rocker-arm::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%,
+    #c8ced4 0%, #8a9298 60%, #606870 100%);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.4);
+}
+
+/* Light position */
+.mode-toggle.is-light .rocker-arm {
+  left: 26px;
+}
+
+/* ── LANG TOGGLE — two circular push-buttons ── */
+.lang-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+.lang-flag {
+  position: relative;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--chassis-3) 0%, var(--chassis-2) 100%);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 3px solid rgba(0,0,0,0.22);
+  box-shadow:
+    0 3px 0 rgba(0,0,0,0.18),
+    0 5px 9px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
+  transition: transform 0.06s ease-out, box-shadow 0.06s ease-out, border-bottom-width 0.06s ease-out;
+  opacity: 0.78;
+  filter: saturate(0.85);
+}
+.lang-flag::after {
+  content: "";
+  position: absolute;
+  top: 3px; left: 50%;
+  transform: translateX(-50%);
+  width: 18px; height: 4px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 3px;
+  filter: blur(2.5px);
+  pointer-events: none;
+}
+/* Tint amarelo dentro do botão ativo — sem vazamento */
+.lang-flag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 60%,
+    rgba(255,220,90,0.45) 0%,
+    rgba(255,200,60,0.20) 50%,
+    rgba(255,200,60,0) 80%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+.lang-toggle.is-pt .lang-flag.flag-pt::before,
+.lang-toggle.is-en .lang-flag.flag-en::before {
+  opacity: 1;
+  animation: led-pulse-glow 2.8s ease-in-out infinite;
+}
+@keyframes led-pulse-glow {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+.lang-flag svg {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: block;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18);
+  position: relative;
+  z-index: 1;
+}
+.lang-flag:hover {
+  transform: translateY(-1px);
+}
+/* Active = pressed-in state */
+.lang-toggle.is-pt .lang-flag.flag-pt,
+.lang-toggle.is-en .lang-flag.flag-en {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.1),
+    0 1px 3px rgba(0,0,0,0.1),
+    inset 0 1px 3px rgba(0,0,0,0.18),
+    inset 0 -1px 1px rgba(0,0,0,0.05);
+  opacity: 1;
+  filter: saturate(1.05);
+}
+.lang-toggle.is-pt .lang-flag.flag-pt::after,
+.lang-toggle.is-en .lang-flag.flag-en::after {
+  opacity: 0.25;
+}
+
+/* Header slot wrapper */
+.lang-slot {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* ── SERVICES DARK MODE ── */
+.services-grid.mode-dark .service-item {
+  background: #1a1a1a;
+}
+.services-grid.mode-dark {
+  background: rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.05);
+}
+.services-grid.mode-dark .service-num {
+  color: rgba(245,240,235,0.75);
+  opacity: 1;
+}
+.services-grid.mode-dark .service-name {
+  color: rgba(245,240,235,0.82);
+}
+.services-grid.mode-dark .service-item:hover {
+  background: #222;
+}
+
+/* ── SERVICES LIGHT MODE (default) ── */
+.services-grid.mode-light .service-item {
+  background: #eaecec;
+}
+.services-grid.mode-light .service-num {
+  color: var(--text-soft);
+}
+.services-grid.mode-light .service-name {
+  color: var(--text-main);
+}
+
+/* ── FLOW HEADER ── */
+.flow-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.flow-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.flow-btn {
+  width: 32px; height: 32px;
+  border-radius: 4px;
+  background: linear-gradient(145deg, var(--chassis), var(--chassis-2));
+  border: 1px solid rgba(0,0,0,0.16);
+  border-bottom: 2px solid rgba(0,0,0,0.22);
+  box-shadow:
+    0 3px 0 rgba(0,0,0,0.15),
+    0 4px 8px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,1);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--text-mid);
+  transition: all 0.05s ease-out;
+  padding: 0;
+}
+.flow-btn svg {
+  width: 12px; height: 12px;
+}
+.flow-btn:hover {
+  background: var(--chassis-2);
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 0 rgba(0,0,0,0.15),
+    0 6px 10px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.flow-btn:active, .flow-btn.is-pressed {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow:
+    0 0 0 rgba(0,0,0,0.1),
+    0 1px 2px rgba(0,0,0,0.08),
+    inset 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* Play button — no color change when active */
+#flowPlay.is-playing {
+  color: var(--text-mid);
+}
+
+/* ── CTA BADGE — pill shaped, tilted like a slope ── */
+.cta-cluster {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cta-badge {
+  position: absolute;
+  right: -110px;
+  top: -18px;
+  transform: rotate(-12deg);
+  /* Asymmetric, "stuck" shadow — adesivo colado, sombra curta */
+  filter:
+    drop-shadow(1.5px 2.5px 2px rgba(0,0,0,0.22))
+    drop-shadow(0.5px 1px 0px rgba(0,0,0,0.16))
+    drop-shadow(-0.5px -0.3px 0.5px rgba(0,0,0,0.04));
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .cta-badge {
+    /* Adesivo de fábrica — colado acima do botão, levemente deslocado p/ direita,
+       sem cobrir o CTA */
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: calc(100% + 6px);
+    transform: translateX(-10%) rotate(-8deg);
+    transform-origin: bottom left;
+  }
+}
+
+.cta-badge-body {
+  position: relative;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    115deg,
+    #e8e0f0 0%,
+    #c0d8f8 8%,
+    #b8f0e8 18%,
+    #e0f0b8 28%,
+    #f8e0c0 38%,
+    #f0c8d8 48%,
+    #d8c0f8 58%,
+    #b8e0f8 68%,
+    #c8f8e0 78%,
+    #f0e8b8 88%,
+    #e8c8f0 100%
+  );
+  animation: holo-shift 6s ease-in-out infinite alternate;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Inner ring — keeps the badge feel without outer border */
+.cta-badge-body::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(10,8,20,0.65);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Foil shimmer — same dense crossed-line treatment as .sticker-body */
+.cta-badge-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      100deg,
+      rgba(255,255,255,0.0)  0px,
+      rgba(255,255,255,0.35) 1px,
+      rgba(255,255,255,0.0)  2px,
+      rgba(255,255,255,0.0)  4px
+    ),
+    repeating-linear-gradient(
+      10deg,
+      rgba(255,255,255,0.0)  0px,
+      rgba(255,255,255,0.15) 1px,
+      rgba(255,255,255,0.0)  2px,
+      rgba(255,255,255,0.0)  5px
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.4) 0%,
+      rgba(255,255,255,0.0) 40%,
+      rgba(255,255,255,0.2) 60%,
+      rgba(255,255,255,0.0) 100%
+    );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cta-badge-noise {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.45 0 0 0 0 0.25 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cta-badge-text {
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #0d0d1a;
+  white-space: nowrap;
+  position: relative; z-index: 4;
+}
+
+.cta-badge-peel {
+  position: absolute;
+  bottom: -4px; right: 10px;
+  width: 16px; height: 10px;
+  background: linear-gradient(130deg, #c9bda4 0%, #e2d8c2 50%, transparent 100%);
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+  box-shadow: -1px -1px 3px rgba(0,0,0,0.1);
+}
+
+/* ── CTA BADGE DEFECTS — mesmo acabamento do sticker da hero ── */
+
+/* SVG scratches overlay */
+.cta-badge-scratches {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: 20;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Defeitos de descolamento desativados — não pareciam naturais
+   nas escalas pequenas dos badges */
+.cta-badge-peel-bl,
+.cta-badge-peel-shadow,
+.cta-badge-peel-tr,
+.sticker-peel-bl,
+.sticker-peel-shadow,
+.sticker-peel-tr {
+  display: none !important;
+}
+
+/* ── SECTION LED PANELS ── */
+.section-led-panel {
+  display: block;
+  overflow: hidden;
+  background: #060708;
+  border-top: 2px solid #0a0a0a;
+  border-left: 2px solid #0d0d0d;
+  border-right: 2px solid #0d0d0d;
+  border-bottom: 1.5px solid #1e1e1e;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  margin-bottom: 1.75rem;
+  position: relative;
+  width: 100%;
+  /* Vignette */
+  box-shadow:
+    inset 0 0 18px rgba(0,0,0,0.95),
+    inset 0 0 6px rgba(0,0,0,0.8),
+    inset 24px 0 24px rgba(0,0,0,0.5),
+    inset -24px 0 24px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.35),
+    0 -1px 0 rgba(0,0,0,0.3);
+}
+/* Scanlines */
+.section-led-panel::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px, transparent 2px,
+    rgba(0,0,0,0.25) 2px, rgba(0,0,0,0.25) 3px
+  );
+  pointer-events: none; z-index: 3;
+}
+/* Phosphor bloom */
+.section-led-panel::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center,
+    rgba(8,236,243,0.05) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+.section-led-track {
+  display: flex;
+  width: max-content;
+  animation: led-scroll 18s linear infinite;
+  position: relative; z-index: 1;
+}
+.section-led-item {
+  display: flex; align-items: center;
+  padding: 0 1.5rem;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem; font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #08ECF3;
+  text-shadow:
+    0 0 3px rgba(8,236,243,1),
+    0 0 8px rgba(8,236,243,0.85),
+    0 0 18px rgba(8,236,243,0.5),
+    0 0 35px rgba(8,236,243,0.2);
+}
+.section-led-sep {
+  color: rgba(8,236,243,0.3);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  align-self: center;
+  text-shadow: 0 0 6px rgba(8,236,243,0.4);
+}
+
+/* ────────────────────────────────────────
+   CRT TV SCREEN
+──────────────────────────────────────── */
+
+/* Outer bezel */
+.crt-bezel {
+  position: relative;
+  border-radius: 28% / 12%;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 50%, #1c1c1c 100%);
+  padding: 18px 24px 22px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.6),
+    0 2px 8px rgba(0,0,0,0.4),
+    inset 0 2px 4px rgba(255,255,255,0.06),
+    inset 0 -2px 4px rgba(0,0,0,0.8);
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+/* The screen itself — heavily rounded CRT tube */
+.crt-screen {
+  position: relative;
+  border-radius: 22% / 10%;
+  overflow: hidden;
+  background: #050a08;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 60px rgba(0,0,0,0.9),
+    inset 0 0 120px rgba(0,0,0,0.6),
+    inset 0 0 8px rgba(0,0,0,1);
+  /* Screen curvature illusion */
+  transform: perspective(800px) rotateX(1deg);
+}
+
+/* Dark mode screen bg */
+.crt-screen.mode-dark {
+  background: #04080a;
+}
+
+/* Light mode screen bg */
+.crt-screen.mode-light {
+  background: #f0f2f2;
+}
+
+/* Scanlines */
+.crt-scanlines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 4px,
+    rgba(0,0,0,0.15) 4px,
+    rgba(0,0,0,0.15) 5px
+  );
+  pointer-events: none; z-index: 3;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+.crt-screen.mode-light .crt-scanlines {
+  opacity: 0;
+}
+
+/* Rolling scanline — single bright band that slowly travels down */
+.crt-rolling {
+  position: absolute;
+  left: 0; right: 0;
+  height: 14%;
+  top: -14%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255,255,255,0.025) 35%,
+    rgba(255,255,255,0.06) 50%,
+    rgba(255,255,255,0.025) 65%,
+    transparent 100%
+  );
+  pointer-events: none; z-index: 6;
+  border-radius: inherit;
+  animation: crt-roll 7.5s linear infinite;
+  mix-blend-mode: screen;
+}
+.crt-screen.mode-light .crt-rolling {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.018) 35%,
+    rgba(0,0,0,0.045) 50%,
+    rgba(0,0,0,0.018) 65%,
+    transparent 100%
+  );
+  mix-blend-mode: multiply;
+  opacity: 1;
+}
+
+@keyframes crt-roll {
+  0%   { top: -14%; }
+  100% { top: 114%; }
+}
+
+/* Static noise overlay */
+.crt-noise {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 5;
+  border-radius: inherit;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.85 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+  animation: crt-noise-shift 0.12s steps(3) infinite;
+  mix-blend-mode: overlay;
+}
+.crt-screen.mode-light .crt-noise {
+  opacity: 0.10;
+  mix-blend-mode: multiply;
+}
+
+@keyframes crt-noise-shift {
+  0%   { background-position: 0 0; }
+  25%  { background-position: -40px 30px; }
+  50%  { background-position: 25px -50px; }
+  75%  { background-position: -15px 60px; }
+  100% { background-position: 50px 20px; }
+}
+
+/* Subtle brightness flicker on the whole screen */
+.crt-screen.mode-dark {
+  animation: crt-flicker 4.5s ease-in-out infinite;
+}
+.crt-screen.mode-light {
+  animation: crt-flicker-light 4.5s ease-in-out infinite;
+}
+@keyframes crt-flicker {
+  0%, 100% { filter: brightness(1) contrast(1); }
+  12%      { filter: brightness(1.05) contrast(1.03); }
+  16%      { filter: brightness(0.94) contrast(0.97); }
+  38%      { filter: brightness(1.04) contrast(1.02); }
+  52%      { filter: brightness(0.96) contrast(1); }
+  68%      { filter: brightness(1.06) contrast(1.04); }
+  72%      { filter: brightness(0.93) contrast(0.96); }
+  85%      { filter: brightness(1.03) contrast(1.01); }
+}
+@keyframes crt-flicker-light {
+  0%, 100% { filter: brightness(1) contrast(1); }
+  12%      { filter: brightness(1.025) contrast(1.02); }
+  16%      { filter: brightness(0.97) contrast(0.98); }
+  38%      { filter: brightness(1.02) contrast(1.015); }
+  52%      { filter: brightness(0.98) contrast(1); }
+  68%      { filter: brightness(1.03) contrast(1.025); }
+  72%      { filter: brightness(0.965) contrast(0.97); }
+  85%      { filter: brightness(1.015) contrast(1.01); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-rolling, .crt-noise { animation: none; }
+  .crt-screen.mode-dark,
+  .crt-screen.mode-light { animation: none; }
+}
+
+/* Vignette — corners dark */
+.crt-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0,0,0,0.55) 80%,
+    rgba(0,0,0,0.85) 100%
+  );
+  pointer-events: none; z-index: 4;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+.crt-screen.mode-light .crt-vignette {
+  opacity: 0.25;
+}
+
+/* Glass glint — top left shine */
+.crt-glint {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 45%;
+  background: radial-gradient(
+    ellipse at 40% 0%,
+    rgba(255,255,255,0.055) 0%,
+    transparent 70%
+  );
+  pointer-events: none; z-index: 5;
+  border-radius: inherit;
+}
+
+/* Reflection strip at bottom */
+.crt-reflection {
+  position: absolute;
+  bottom: -8px; left: 15%; right: 15%;
+  height: 6px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.06) 30%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.06) 70%,
+    transparent
+  );
+  filter: blur(2px);
+  border-radius: 50%;
+}
+
+/* Content area */
+.crt-content {
+  position: relative; z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 2.5rem 3rem;
+  width: 100%;
+}
+
+/* Each service line */
+.crt-item {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-align: center;
+  cursor: default;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+/* Numeração discreta — antes do nome do serviço */
+.crt-num {
+  display: inline-block;
+  margin-right: 0.85em;
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+/* Dark mode text — brand teal */
+.crt-screen.mode-dark .crt-item {
+  color: #08ECF3;
+  text-shadow:
+    0 0 4px rgba(8,236,243,1),
+    0 0 10px rgba(8,236,243,0.7),
+    0 0 22px rgba(8,236,243,0.35);
+}
+
+/* Light mode text — dark teal on white */
+.crt-screen.mode-light .crt-item {
+  color: #0A8A8E;
+  text-shadow: none;
+}
+
+/* Hover — gradient underline cursor */
+.crt-item::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%; height: 1.5px;
+  background: var(--gradient);
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+.crt-item:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+.crt-screen.mode-dark .crt-item:hover {
+  text-shadow:
+    0 0 6px rgba(8,236,243,1),
+    0 0 16px rgba(8,236,243,0.8),
+    0 0 32px rgba(8,236,243,0.4);
+}
+.crt-screen.mode-light .crt-item:hover {
+  color: #065f64;
+  text-shadow: none;
+}
+
+/* ────────────────────────────────────────
+   RESPONSIVE
+──────────────────────────────────────── */
+@media (max-width: 680px) {
+  :root { --wood-w: 20px; }
+  #page { padding: 1rem 0.5rem; }
+  .device { border-radius: 10px; }
+  .panel-header,
+  .panel-tagline,
+  .panel-hero-copy,
+  .panel-section,
+  .panel-footer,
+  .panel-cta { padding-left: calc(var(--wood-w) + 1.25rem); padding-right: calc(var(--wood-w) + 1.25rem); }
+  .panel-led { margin: 1.25rem calc(var(--wood-w) + 0.75rem); }
+  .divisoria::before { left: calc(var(--wood-w) + 0.75rem); }
+  .divisoria::after  { right: calc(var(--wood-w) + 0.75rem); }
+  .panel-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .logo-wrap {
+    width: clamp(160px, 58vw, 260px);
+  }
+  .logo-col { align-items: center; }
+  .tagline-sub { text-align: center; padding-left: 0; }
+  .desktop-only { display: none !important; }
+  .mobile-only  { display: flex !important; }
+  .mobile-only.wa-zone {
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 0 !important;
+  }
+  .mobile-only .wa-group {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  /* Lang toggle on mobile: centered + slightly smaller */
+  .lang-slot {
+    align-self: center !important;
+    margin: 0.5rem 0 -0.25rem 0 !important;
+  }
+  .lang-flag {
+    width: 30px; height: 30px;
+  }
+  .lang-flag svg {
+    width: 17px; height: 17px;
+  }
+  .lang-flag::after {
+    width: 17px; height: 4px;
+    top: 3px;
+  }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-header { flex-wrap: wrap; gap: 1rem; }
+  /* Badge — adesivo de fábrica colado sobre o chassi,
+     vaza por cima da linha superior sem alterar o painel */
+  .cta-badge {
+    display: block;
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: calc(100% + 6px);
+    transform: translateX(55%) rotate(-8deg) scale(0.78);
+    transform-origin: bottom left;
+    z-index: 5;
+  }
+  .hero-copy-desktop { display: none; }
+  .hero-copy-mobile  { display: block; }
+
+  /* Footer mobile */
+  .panel-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+  .footer-copy {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  .footer-wordmark-line {
+    display: block;
+  }
+  .footer-rights-line {
+    display: block;
+  }
+  .foot-btn {
+    width: 28px; height: 28px;
+  }
+  .foot-btn svg {
+    width: 12px; height: 12px;
+  }
+  .footer-btn-group { gap: 0.45rem; }
+  .foot-btn-label { font-size: 0.52rem; }
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(8,5,2,0.78);
+  z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.modal-overlay.is-open { opacity: 1; pointer-events: all; }
+
+.modal-panel {
+  position: relative;
+  background: #f3ede0;
+  width: 100%; max-width: 520px; max-height: 80vh;
+  display: flex; flex-direction: column;
+  transform: translateY(14px) rotate(-0.4deg);
+  transition: transform 0.25s ease;
+  box-shadow:
+    inset 5px 0 10px rgba(0,0,0,0.04),
+    inset -1px 0 2px rgba(255,255,255,0.45),
+    0 2px 0 #bfad92,
+    8px 14px 44px rgba(0,0,0,0.42),
+    0 0 0 1px #c8b89a;
+}
+.modal-overlay.is-open .modal-panel { transform: translateY(0) rotate(-0.4deg); }
+
+.modal-panel::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.modal-header {
+  position: relative; z-index: 1; flex-shrink: 0;
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 1rem 1.4rem 0.75rem;
+  border-bottom: 1px solid #c4b49a;
+}
+
+.modal-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: #1e1208;
+}
+
+.modal-close {
+  background: none; border: none; cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.06em;
+  color: #9a8870; padding: 0;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: #1e1208; }
+
+.modal-body {
+  position: relative; z-index: 1;
+  overflow-y: auto;
+  padding: 1.1rem 1.4rem 1.4rem; flex: 1;
+}
+.modal-body::-webkit-scrollbar { width: 3px; }
+.modal-body::-webkit-scrollbar-track { background: #e8e0d0; }
+.modal-body::-webkit-scrollbar-thumb { background: #b8a88a; }
+
+.modal-body p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem; font-weight: 300; line-height: 1.85;
+  color: #3a2c1a; margin-bottom: 0.8rem;
+}
+
+.modal-body h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.57rem; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #1e1208;
+  margin: 1.2rem 0 0.4rem;
+  padding-bottom: 0.28rem;
+  border-bottom: 1px solid #d4c4a8;
+}
+.modal-body h3:first-child { margin-top: 0; }
+
+.modal-body p strong {
+  font-weight: 400; color: #1e1208;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: #c4b49a;
+}
+
+.modal-updated {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 0.55rem !important; color: #9a8870 !important;
+  margin-top: 1.3rem !important; padding-top: 0.85rem;
+  border-top: 1px solid #d4c4a8;
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-counter">
+    <span id="pctNum">000</span>
+    <span class="pct">%</span>
+  </div>
+  <div class="loader-track"><div class="loader-fill" id="pctFill"></div></div>
+  <div class="loader-label" data-i18n="loader">inicializando</div>
+</div>
+
+<!-- PAGE -->
+<div id="page">
+  <div class="device">
+
+    <!-- HEADER -->
+    <div class="panel-header">
+      <div class="logo-col">
+      <div class="logo-wrap">
+<svg width="100%" height="100%" viewBox="0 0 846 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-697.232354,-2007.513507)">
+        <g transform="matrix(0.928313,0,0,2.781822,0,0)">
+            <g transform="matrix(1.077223,0,0,0.359477,0,0)">
+                <g transform="matrix(222.222222,0,0,222.222222,691.742771,2176.034341)">
+                    <path d="M0.422,-0.051C0.453,-0.048 0.481,-0.042 0.504,-0.033C0.528,-0.025 0.546,-0.012 0.559,0.005C0.572,0.022 0.579,0.045 0.579,0.073C0.579,0.105 0.568,0.133 0.547,0.156C0.526,0.179 0.494,0.197 0.452,0.209C0.411,0.222 0.359,0.228 0.299,0.228C0.21,0.228 0.143,0.216 0.095,0.19C0.048,0.165 0.025,0.13 0.025,0.087C0.025,0.074 0.026,0.063 0.029,0.053C0.032,0.043 0.036,0.035 0.04,0.028L0.157,0.045C0.155,0.048 0.153,0.052 0.151,0.058C0.149,0.064 0.147,0.071 0.147,0.08C0.147,0.101 0.162,0.116 0.19,0.126C0.218,0.135 0.255,0.14 0.303,0.14C0.337,0.14 0.366,0.138 0.39,0.133C0.413,0.128 0.43,0.121 0.442,0.112C0.454,0.103 0.46,0.093 0.46,0.081C0.46,0.063 0.452,0.052 0.436,0.047C0.42,0.042 0.401,0.039 0.379,0.037L0.178,0.019C0.142,0.015 0.113,0.005 0.09,-0.013C0.067,-0.031 0.055,-0.054 0.055,-0.083C0.055,-0.1 0.06,-0.117 0.069,-0.132C0.079,-0.147 0.089,-0.159 0.101,-0.169C0.114,-0.179 0.124,-0.185 0.133,-0.188L0.207,-0.152C0.2,-0.15 0.191,-0.146 0.181,-0.138C0.172,-0.129 0.167,-0.12 0.167,-0.108C0.167,-0.098 0.171,-0.089 0.181,-0.082C0.19,-0.075 0.208,-0.07 0.235,-0.068L0.422,-0.051ZM0.483,-0.531L0.597,-0.531L0.551,-0.325C0.542,-0.286 0.528,-0.251 0.508,-0.221C0.488,-0.19 0.462,-0.166 0.428,-0.148C0.395,-0.13 0.353,-0.121 0.303,-0.121C0.25,-0.121 0.205,-0.13 0.167,-0.147C0.129,-0.165 0.1,-0.189 0.08,-0.22C0.059,-0.251 0.049,-0.287 0.049,-0.328C0.049,-0.369 0.059,-0.406 0.08,-0.438C0.101,-0.47 0.13,-0.495 0.167,-0.513C0.204,-0.531 0.246,-0.54 0.293,-0.54C0.331,-0.54 0.366,-0.534 0.396,-0.521C0.426,-0.508 0.451,-0.492 0.469,-0.472C0.487,-0.452 0.497,-0.43 0.498,-0.408L0.468,-0.402L0.483,-0.531ZM0.302,-0.22C0.328,-0.22 0.351,-0.224 0.37,-0.233C0.389,-0.241 0.404,-0.254 0.415,-0.27C0.425,-0.287 0.431,-0.306 0.431,-0.33C0.431,-0.353 0.425,-0.372 0.415,-0.389C0.404,-0.405 0.389,-0.418 0.37,-0.427C0.351,-0.435 0.328,-0.44 0.302,-0.44C0.277,-0.44 0.255,-0.435 0.236,-0.426C0.216,-0.417 0.201,-0.404 0.19,-0.388C0.179,-0.371 0.173,-0.351 0.173,-0.328C0.173,-0.306 0.179,-0.286 0.189,-0.27C0.2,-0.254 0.215,-0.241 0.234,-0.233C0.253,-0.224 0.276,-0.22 0.302,-0.22Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,818.520549,2176.034341)">
+                    <path d="M0.114,-0.224L0.114,-0.316L0.489,-0.316L0.474,-0.29L0.474,-0.304C0.474,-0.327 0.469,-0.349 0.458,-0.37C0.448,-0.391 0.432,-0.408 0.41,-0.42C0.389,-0.433 0.362,-0.44 0.329,-0.44C0.297,-0.44 0.268,-0.433 0.244,-0.419C0.22,-0.405 0.201,-0.385 0.188,-0.36C0.175,-0.334 0.169,-0.303 0.169,-0.267C0.169,-0.23 0.175,-0.199 0.188,-0.172C0.2,-0.146 0.219,-0.126 0.243,-0.112C0.267,-0.097 0.297,-0.09 0.332,-0.09C0.356,-0.09 0.376,-0.093 0.393,-0.097C0.411,-0.102 0.425,-0.108 0.436,-0.116C0.447,-0.123 0.456,-0.131 0.461,-0.14C0.467,-0.149 0.47,-0.158 0.472,-0.167L0.598,-0.167C0.596,-0.145 0.588,-0.124 0.576,-0.102C0.563,-0.081 0.545,-0.062 0.523,-0.045C0.5,-0.028 0.472,-0.014 0.439,-0.004C0.407,0.006 0.369,0.011 0.327,0.011C0.271,0.011 0.221,-0 0.179,-0.024C0.136,-0.047 0.103,-0.08 0.08,-0.121C0.056,-0.163 0.044,-0.21 0.044,-0.264C0.044,-0.319 0.056,-0.367 0.08,-0.408C0.104,-0.45 0.137,-0.482 0.18,-0.505C0.223,-0.528 0.272,-0.54 0.328,-0.54C0.385,-0.54 0.434,-0.528 0.475,-0.505C0.517,-0.482 0.549,-0.449 0.571,-0.408C0.594,-0.366 0.605,-0.318 0.605,-0.264C0.605,-0.257 0.605,-0.249 0.605,-0.241C0.604,-0.233 0.604,-0.227 0.603,-0.224L0.114,-0.224Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,956.076104,2176.034341)">
+                    <path d="M0.327,0.011C0.271,0.011 0.222,-0.001 0.18,-0.025C0.137,-0.049 0.104,-0.081 0.08,-0.123C0.056,-0.164 0.044,-0.212 0.044,-0.266C0.044,-0.319 0.056,-0.367 0.08,-0.408C0.104,-0.449 0.137,-0.482 0.18,-0.505C0.222,-0.528 0.271,-0.54 0.327,-0.54C0.383,-0.54 0.432,-0.528 0.474,-0.505C0.517,-0.482 0.55,-0.449 0.574,-0.408C0.598,-0.367 0.61,-0.319 0.61,-0.266C0.61,-0.212 0.598,-0.164 0.574,-0.123C0.55,-0.081 0.517,-0.049 0.474,-0.025C0.432,-0.001 0.383,0.011 0.327,0.011ZM0.327,-0.094C0.358,-0.094 0.385,-0.101 0.408,-0.116C0.431,-0.13 0.45,-0.15 0.462,-0.175C0.475,-0.201 0.482,-0.231 0.482,-0.266C0.482,-0.3 0.475,-0.33 0.462,-0.355C0.45,-0.381 0.431,-0.4 0.408,-0.414C0.385,-0.428 0.358,-0.435 0.327,-0.435C0.297,-0.435 0.27,-0.428 0.246,-0.414C0.223,-0.4 0.205,-0.381 0.192,-0.355C0.179,-0.33 0.172,-0.3 0.172,-0.266C0.172,-0.231 0.179,-0.201 0.192,-0.175C0.205,-0.15 0.223,-0.13 0.246,-0.116C0.27,-0.101 0.297,-0.094 0.327,-0.094ZM0.182,-0.65L0.182,-0.704L0.473,-0.704L0.473,-0.65L0.182,-0.65Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,1094.742771,2176.034341)">
+                    <path d="M0.067,-0L0.067,-0.531L0.194,-0.531L0.194,-0.356L0.164,-0.372C0.167,-0.395 0.173,-0.416 0.182,-0.437C0.191,-0.457 0.203,-0.475 0.218,-0.49C0.232,-0.506 0.251,-0.518 0.272,-0.527C0.293,-0.536 0.318,-0.54 0.345,-0.54C0.367,-0.54 0.384,-0.538 0.396,-0.535C0.409,-0.532 0.417,-0.529 0.42,-0.527L0.396,-0.411C0.393,-0.413 0.386,-0.416 0.376,-0.419C0.366,-0.423 0.352,-0.425 0.335,-0.425C0.308,-0.425 0.285,-0.42 0.267,-0.411C0.249,-0.401 0.235,-0.389 0.224,-0.373C0.213,-0.358 0.206,-0.341 0.201,-0.322C0.196,-0.304 0.194,-0.285 0.194,-0.267L0.194,-0L0.067,-0Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,1182.964993,2176.034341)">
+                    <path d="M0.422,-0.051C0.453,-0.048 0.481,-0.042 0.504,-0.033C0.528,-0.025 0.546,-0.012 0.559,0.005C0.572,0.022 0.579,0.045 0.579,0.073C0.579,0.105 0.568,0.133 0.547,0.156C0.526,0.179 0.494,0.197 0.452,0.209C0.411,0.222 0.359,0.228 0.299,0.228C0.21,0.228 0.143,0.216 0.095,0.19C0.048,0.165 0.025,0.13 0.025,0.087C0.025,0.074 0.026,0.063 0.029,0.053C0.032,0.043 0.036,0.035 0.04,0.028L0.157,0.045C0.155,0.048 0.153,0.052 0.151,0.058C0.149,0.064 0.147,0.071 0.147,0.08C0.147,0.101 0.162,0.116 0.19,0.126C0.218,0.135 0.255,0.14 0.303,0.14C0.337,0.14 0.366,0.138 0.39,0.133C0.413,0.128 0.43,0.121 0.442,0.112C0.454,0.103 0.46,0.093 0.46,0.081C0.46,0.063 0.452,0.052 0.436,0.047C0.42,0.042 0.401,0.039 0.379,0.037L0.178,0.019C0.142,0.015 0.113,0.005 0.09,-0.013C0.067,-0.031 0.055,-0.054 0.055,-0.083C0.055,-0.1 0.06,-0.117 0.069,-0.132C0.079,-0.147 0.089,-0.159 0.101,-0.169C0.114,-0.179 0.124,-0.185 0.133,-0.188L0.207,-0.152C0.2,-0.15 0.191,-0.146 0.181,-0.138C0.172,-0.129 0.167,-0.12 0.167,-0.108C0.167,-0.098 0.171,-0.089 0.181,-0.082C0.19,-0.075 0.208,-0.07 0.235,-0.068L0.422,-0.051ZM0.483,-0.531L0.597,-0.531L0.551,-0.325C0.542,-0.286 0.528,-0.251 0.508,-0.221C0.488,-0.19 0.462,-0.166 0.428,-0.148C0.395,-0.13 0.353,-0.121 0.303,-0.121C0.25,-0.121 0.205,-0.13 0.167,-0.147C0.129,-0.165 0.1,-0.189 0.08,-0.22C0.059,-0.251 0.049,-0.287 0.049,-0.328C0.049,-0.369 0.059,-0.406 0.08,-0.438C0.101,-0.47 0.13,-0.495 0.167,-0.513C0.204,-0.531 0.246,-0.54 0.293,-0.54C0.331,-0.54 0.366,-0.534 0.396,-0.521C0.426,-0.508 0.451,-0.492 0.469,-0.472C0.487,-0.452 0.497,-0.43 0.498,-0.408L0.468,-0.402L0.483,-0.531ZM0.302,-0.22C0.328,-0.22 0.351,-0.224 0.37,-0.233C0.389,-0.241 0.404,-0.254 0.415,-0.27C0.425,-0.287 0.431,-0.306 0.431,-0.33C0.431,-0.353 0.425,-0.372 0.415,-0.389C0.404,-0.405 0.389,-0.418 0.37,-0.427C0.351,-0.435 0.328,-0.44 0.302,-0.44C0.277,-0.44 0.255,-0.435 0.236,-0.426C0.216,-0.417 0.201,-0.404 0.19,-0.388C0.179,-0.371 0.173,-0.351 0.173,-0.328C0.173,-0.306 0.179,-0.286 0.189,-0.27C0.2,-0.254 0.215,-0.241 0.234,-0.233C0.253,-0.224 0.276,-0.22 0.302,-0.22Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,1314.520549,2176.034341)">
+                    <path d="M0.065,-0L0.065,-0.531L0.191,-0.531L0.191,-0L0.065,-0ZM0.128,-0.632C0.108,-0.632 0.09,-0.637 0.074,-0.648C0.059,-0.66 0.051,-0.675 0.051,-0.695C0.051,-0.715 0.059,-0.731 0.074,-0.742C0.09,-0.753 0.108,-0.758 0.128,-0.758C0.149,-0.758 0.167,-0.753 0.182,-0.742C0.197,-0.731 0.205,-0.715 0.205,-0.695C0.205,-0.675 0.197,-0.659 0.182,-0.648C0.167,-0.637 0.149,-0.632 0.128,-0.632Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,1364.853882,2176.034341)">
+                    <path d="M0.249,0.011C0.21,0.011 0.175,0.004 0.145,-0.008C0.115,-0.02 0.091,-0.039 0.074,-0.062C0.057,-0.086 0.049,-0.114 0.049,-0.148C0.049,-0.184 0.059,-0.214 0.078,-0.237C0.098,-0.261 0.125,-0.279 0.158,-0.292C0.192,-0.304 0.229,-0.313 0.27,-0.317C0.332,-0.323 0.374,-0.329 0.399,-0.334C0.423,-0.339 0.435,-0.349 0.435,-0.361L0.435,-0.362C0.435,-0.387 0.425,-0.405 0.403,-0.418C0.382,-0.431 0.352,-0.437 0.313,-0.437C0.271,-0.437 0.24,-0.43 0.218,-0.415C0.195,-0.401 0.184,-0.378 0.184,-0.347L0.059,-0.347C0.059,-0.388 0.07,-0.423 0.092,-0.452C0.114,-0.481 0.144,-0.503 0.183,-0.518C0.221,-0.533 0.265,-0.54 0.314,-0.54C0.359,-0.54 0.4,-0.533 0.438,-0.52C0.476,-0.506 0.506,-0.485 0.529,-0.458C0.551,-0.43 0.563,-0.396 0.563,-0.355L0.563,-0.111C0.563,-0.098 0.563,-0.086 0.564,-0.074C0.565,-0.062 0.567,-0.051 0.57,-0.042C0.573,-0.031 0.577,-0.022 0.581,-0.015C0.586,-0.008 0.589,-0.003 0.592,-0L0.467,-0C0.464,-0.002 0.461,-0.007 0.457,-0.013C0.453,-0.02 0.449,-0.028 0.446,-0.037C0.443,-0.047 0.44,-0.057 0.439,-0.069C0.437,-0.08 0.436,-0.092 0.436,-0.106L0.461,-0.089C0.451,-0.069 0.436,-0.051 0.415,-0.036C0.395,-0.021 0.371,-0.01 0.342,-0.002C0.314,0.007 0.283,0.011 0.249,0.011ZM0.279,-0.09C0.308,-0.09 0.334,-0.094 0.357,-0.104C0.381,-0.113 0.4,-0.128 0.415,-0.148C0.429,-0.167 0.437,-0.192 0.437,-0.223L0.437,-0.297L0.467,-0.262C0.446,-0.254 0.42,-0.247 0.39,-0.242C0.36,-0.237 0.329,-0.233 0.298,-0.23C0.258,-0.226 0.227,-0.219 0.207,-0.209C0.187,-0.199 0.176,-0.182 0.176,-0.158C0.176,-0.135 0.185,-0.118 0.202,-0.107C0.219,-0.095 0.245,-0.09 0.279,-0.09Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,1496.076104,2176.034341)">
+                    <path d="M0.139,0.014C0.119,0.014 0.101,0.007 0.087,-0.007C0.073,-0.021 0.066,-0.038 0.066,-0.059C0.066,-0.078 0.073,-0.096 0.087,-0.11C0.101,-0.124 0.119,-0.131 0.139,-0.131C0.159,-0.131 0.176,-0.124 0.19,-0.11C0.204,-0.096 0.211,-0.078 0.211,-0.059C0.211,-0.038 0.204,-0.021 0.19,-0.007C0.176,0.007 0.159,0.014 0.139,0.014Z" style="fill:rgb(66,60,60);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(222.222222,0,0,222.222222,1557.742771,2176.034341)">
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(0.928313,0,0,2.781822,0,0)">
+            <g transform="matrix(0.78653,0,0,0.21115,-669.567093,661.010534)">
+                <rect x="2213.586" y="305.934" width="95.297" height="25.226" style="fill:url(#logo-grad);"/>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(95.29651,0,0,25.225547,2213.585518,318.546822)"><stop offset="0" style="stop-color:rgb(255,170,0);stop-opacity:1"/><stop offset="0.51" style="stop-color:rgb(222,5,56);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(8,236,243);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>
+      </div>
+      <h1 class="tagline-sub" data-i18n="tagline">arquitetura digital</h1>
+      </div><!-- /logo-col -->
+      <div class="lang-slot" id="langSlot">
+        <div class="lang-toggle is-pt" id="langToggle" role="radiogroup" aria-label="alternar idioma / switch language">
+          <button type="button" class="lang-flag flag-pt" data-lang="pt" role="radio" aria-checked="true" aria-label="Português" tabindex="0">
+            <!-- Brazil flag (simplified circular) -->
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="16" cy="16" r="16" fill="#009C3B"/>
+              <path d="M16 5 L29 16 L16 27 L3 16 Z" fill="#FFDF00"/>
+              <circle cx="16" cy="16" r="6" fill="#002776"/>
+              <path d="M10.5 14.5 Q16 13 21.5 14.5" stroke="#fff" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button type="button" class="lang-flag flag-en" data-lang="en" role="radio" aria-checked="false" aria-label="English" tabindex="0">
+            <!-- UK flag (simplified circular) -->
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="16" cy="16" r="16" fill="#012169"/>
+              <path d="M0 0 L32 32 M32 0 L0 32" stroke="#fff" stroke-width="4"/>
+              <path d="M0 0 L32 32 M32 0 L0 32" stroke="#C8102E" stroke-width="2"/>
+              <path d="M16 0 V32 M0 16 H32" stroke="#fff" stroke-width="6"/>
+              <path d="M16 0 V32 M0 16 H32" stroke="#C8102E" stroke-width="3"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="header-right-desktop">
+        <div class="sticker sticker-header desktop-only">
+          <div class="sticker-body">
+            <span class="sticker-title" data-i18n="sticker.title">estratégia · design · tecnologia</span>
+            <span class="sticker-sub" data-i18n="sticker.sub">sua presença digital construída com intenção</span>
+          </div>
+          <div class="sticker-peel"></div>
+          <div class="sticker-peel2"></div>
+        </div>
+      </div>
+      <div class="wa-zone desktop-only" style="display:none;">
+        <div class="wa-group">
+          <a class="wa-btn" href="https://wa.me/5585996521515?text=Ol%C3%A1!%20Tenho%20interesse%20em%20iniciar%20um%20projeto%20%3A)" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </a>
+          <div class="wa-status">
+            <span class="led-dot"></span>
+            <span data-i18n="wa.status">disponível para projetos</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-header -->
+
+      <!-- LED DISPLAY -->
+      <div class="panel-led">
+        <div class="led-track-wrap">
+          <div class="led-track" id="ledTrack"></div>
+        </div>
+      </div>
+
+      <!-- HERO COPY + WA mobile -->
+      <div class="panel-hero-copy">
+        <div class="sticker-wrap">
+        <div class="sticker">
+          <!-- scratch SVG overlay -->
+          <svg class="sticker-scratches" viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <line x1="42"  y1="8"  x2="68"  y2="14" stroke="rgba(0,0,0,0.18)" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="44"  y1="10" x2="66"  y2="15" stroke="rgba(255,255,255,0.22)" stroke-width="0.4" stroke-linecap="round"/>
+            <line x1="210" y1="55" x2="245" y2="62" stroke="rgba(0,0,0,0.14)" stroke-width="0.6" stroke-linecap="round"/>
+            <line x1="211" y1="57" x2="244" y2="63" stroke="rgba(255,255,255,0.18)" stroke-width="0.3" stroke-linecap="round"/>
+            <line x1="130" y1="20" x2="148" y2="25" stroke="rgba(0,0,0,0.10)" stroke-width="0.5" stroke-linecap="round"/>
+            <line x1="80"  y1="70" x2="95"  y2="74" stroke="rgba(0,0,0,0.12)" stroke-width="0.6" stroke-linecap="round"/>
+            <line x1="81"  y1="71" x2="94"  y2="75" stroke="rgba(255,255,255,0.16)" stroke-width="0.3" stroke-linecap="round"/>
+            <!-- micro scratches -->
+            <line x1="160" y1="35" x2="170" y2="37" stroke="rgba(0,0,0,0.09)" stroke-width="0.4" stroke-linecap="round"/>
+            <line x1="270" y1="22" x2="278" y2="26" stroke="rgba(0,0,0,0.08)" stroke-width="0.4" stroke-linecap="round"/>
+          </svg>
+
+          <div class="sticker-body">
+            <span class="sticker-title" data-i18n="sticker.title">estratégia · design · tecnologia</span>
+            <span class="sticker-sub" data-i18n="sticker.sub">sua presença digital construída com intenção</span>
+          </div>
+
+          <!-- Bottom-left corner peeling off -->
+          <div class="sticker-peel-bl"></div>
+          <!-- Shadow under peel -->
+          <div class="sticker-peel-shadow"></div>
+          <!-- Top-right micro lift -->
+          <div class="sticker-peel-tr"></div>
+        </div>
+      </div>
+      <div class="wa-zone mobile-only">
+        <a class="wa-btn" href="https://wa.me/5585996521515?text=Ol%C3%A1!%20Tenho%20interesse%20em%20iniciar%20um%20projeto%20%3A)" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+        <div class="wa-status">
+          <span class="led-dot"></span>
+          <span data-i18n="wa.status">disponível para projetos</span>
+        </div>
+        <div class="hero-qr desktop-only">
+          <div class="hero-qr-img" id="heroQR" aria-label="QR Code WhatsApp"></div>
+          <span class="hero-qr-label">
+            <span data-i18n="qr.open">abrir</span>
+            <svg class="qr-wa-mini" viewBox="0 0 32 32" aria-hidden="true"><path fill="#25D366" d="M16 2C8.27 2 2 8.27 2 16c0 2.47.65 4.78 1.78 6.79L2 30l7.4-1.94A13.93 13.93 0 0 0 16 30c7.73 0 14-6.27 14-14S23.73 2 16 2zm0 25.5c-2.18 0-4.21-.6-5.95-1.64l-.43-.25-4.39 1.15 1.17-4.28-.28-.44A11.46 11.46 0 0 1 4.5 16C4.5 9.66 9.66 4.5 16 4.5S27.5 9.66 27.5 16 22.34 27.5 16 27.5zm6.32-8.6c-.35-.18-2.05-1.01-2.37-1.13-.32-.12-.55-.18-.78.18-.23.35-.9 1.13-1.1 1.36-.2.23-.4.26-.75.09-.35-.18-1.47-.54-2.8-1.73-1.04-.92-1.74-2.06-1.94-2.41-.2-.35-.02-.54.15-.71.16-.16.35-.4.52-.6.18-.2.23-.35.35-.58.12-.23.06-.43-.03-.6-.09-.18-.78-1.88-1.07-2.58-.28-.68-.57-.59-.78-.6l-.66-.01c-.23 0-.6.09-.92.43-.32.35-1.21 1.18-1.21 2.88s1.24 3.34 1.41 3.57c.18.23 2.44 3.72 5.91 5.21.83.36 1.47.57 1.97.73.83.26 1.58.22 2.18.13.66-.1 2.05-.84 2.34-1.65.29-.81.29-1.5.2-1.65-.09-.15-.32-.23-.67-.41z"/></svg>
+            <span data-i18n="qr.mobile">no celular</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVISÓRIA -->
+    <div class="divisoria"></div>
+
+    <!-- SERVICES -->
+    <div class="panel-section">
+      <div class="services-header">
+        <p class="section-label" data-i18n="sec.services">serviços</p>
+        <div class="mode-toggle" id="modeToggle">
+          <span class="toggle-label" data-i18n="toggle.dark">dark</span>
+          <div class="rocker-base">
+            <div class="rocker-arm"></div>
+          </div>
+          <span class="toggle-label" data-i18n="toggle.light">light</span>
+        </div>
+      </div>
+      <!-- CRT TV -->
+      <div class="crt-bezel">
+        <div class="crt-screen mode-dark" id="crtScreen">
+          <div class="crt-scanlines"></div>
+          <div class="crt-noise"></div>
+          <div class="crt-rolling"></div>
+          <div class="crt-vignette"></div>
+          <div class="crt-glint"></div>
+          <div class="crt-content" id="crtContent"></div>
+        </div>
+        <div class="crt-reflection"></div>
+      </div>
+
+    </div>
+
+    <!-- DIVISÓRIA -->
+    <div class="divisoria"></div>
+
+    <!-- FLOW -->
+    <div class="panel-section">
+      <div class="flow-header">
+        <p class="section-label" style="margin-bottom:0;" data-i18n="sec.howitworks">como funciona</p>
+        <div class="flow-controls">
+          <button class="flow-btn" id="flowPlay" aria-label="Play">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
+          </button>
+          <button class="flow-btn" id="flowStop" aria-label="Stop">
+            <svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="3" width="10" height="10" rx="1"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="flow-steps" id="flowSteps"></div>
+    </div>
+
+    <!-- CTA BUTTON -->
+    <div class="panel-cta">
+      <div class="cta-cluster">
+        <a href="https://wa.me/5585996521515?text=Ol%C3%A1!%20Tenho%20interesse%20em%20iniciar%20um%20projeto%20%3A)" class="cta-btn" target="_blank" rel="noopener">
+          <span class="cta-led"></span>
+          <span class="cta-label" data-i18n="cta.start">iniciar projeto</span>
+        </a>
+        <div class="cta-badge">
+          <div class="cta-badge-body">
+            <div class="cta-badge-noise"></div>
+            <!-- scratch SVG overlay (mesmo do sticker hero) -->
+            <svg class="cta-badge-scratches" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <line x1="20" y1="22" x2="34" y2="26" stroke="rgba(0,0,0,0.18)" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="21" y1="24" x2="33" y2="27" stroke="rgba(255,255,255,0.22)" stroke-width="0.4" stroke-linecap="round"/>
+              <line x1="58" y1="58" x2="72" y2="62" stroke="rgba(0,0,0,0.14)" stroke-width="0.6" stroke-linecap="round"/>
+              <line x1="59" y1="60" x2="71" y2="63" stroke="rgba(255,255,255,0.18)" stroke-width="0.3" stroke-linecap="round"/>
+              <line x1="42" y1="18" x2="50" y2="20" stroke="rgba(0,0,0,0.10)" stroke-width="0.5" stroke-linecap="round"/>
+              <line x1="30" y1="68" x2="40" y2="71" stroke="rgba(0,0,0,0.12)" stroke-width="0.6" stroke-linecap="round"/>
+              <line x1="31" y1="69" x2="39" y2="72" stroke="rgba(255,255,255,0.16)" stroke-width="0.3" stroke-linecap="round"/>
+              <line x1="55" y1="32" x2="62" y2="34" stroke="rgba(0,0,0,0.09)" stroke-width="0.4" stroke-linecap="round"/>
+              <line x1="68" y1="40" x2="74" y2="43" stroke="rgba(0,0,0,0.08)" stroke-width="0.4" stroke-linecap="round"/>
+            </svg>
+            <span class="cta-badge-text" data-i18n="cta.badge">let's go</span>
+          </div>
+          <!-- Bottom-left corner peeling off -->
+          <div class="cta-badge-peel-bl"></div>
+          <!-- Shadow under peel -->
+          <div class="cta-badge-peel-shadow"></div>
+          <!-- Top-right micro lift -->
+          <div class="cta-badge-peel-tr"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="panel-footer">
+      <div class="footer-copy">
+        <span class="footer-wordmark-line">
+          <span class="footer-wordmark">geōrgia</span>
+          <span class="footer-rights" data-i18n="footer.year"> © 2026</span>
+        </span>
+        <span class="footer-rights-line">
+          <span class="footer-rights" data-i18n="footer.rights">todos os direitos reservados.</span>
+        </span>
+      </div>
+      <div class="footer-btns">
+        <div class="footer-btn-group">
+          <a href="#privacidade" class="foot-btn" aria-label="política de privacidade" data-i18n-aria="footer.privacy">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <span class="foot-btn-label" data-i18n="footer.privacy">política de privacidade</span>
+        </div>
+        <div class="footer-btn-group">
+          <a href="#termos" class="foot-btn" aria-label="termos de uso" data-i18n-aria="footer.terms">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <span class="foot-btn-label" data-i18n="footer.terms">termos de uso</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /device -->
+
+  <!-- BR LINE — outside chassis, on dark desk -->
+  <div class="desk-line">
+    <span class="desk-br">br</span>
+    <div class="desk-grad-line"></div>
+    <span class="desk-year">mmxxvi</span>
+  </div>
+
+</div><!-- /page -->
+
+<!-- MODAL -->
+<div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <span id="modalTitle" class="modal-title"></span>
+      <button class="modal-close" id="modalClose" aria-label="fechar">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ── SOUND ENGINE ── */
+const SFX = (() => {
+  let ctx = null;
+
+  function getCtx() {
+    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+
+  function noise(duration, gain, freq, type) {
+    const c = getCtx();
+    const buf = c.createBuffer(1, Math.ceil(c.sampleRate * duration), c.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < d.length; i++)
+      d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 5);
+    const src = c.createBufferSource();
+    src.buffer = buf;
+    const filt = c.createBiquadFilter();
+    filt.type = type; filt.frequency.value = freq; filt.Q.value = 0.7;
+    const g = c.createGain();
+    g.gain.setValueAtTime(gain, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + duration);
+    src.connect(filt); filt.connect(g); g.connect(c.destination);
+    src.start();
+  }
+
+  function thump(freq, duration, gain) {
+    const c = getCtx();
+    const osc = c.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, c.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(freq * 0.25, c.currentTime + duration);
+    const g = c.createGain();
+    g.gain.setValueAtTime(gain, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + duration);
+    osc.connect(g); g.connect(c.destination);
+    osc.start(); osc.stop(c.currentTime + duration);
+  }
+
+  return {
+    // Pequeno botão de membrana (bandeiras de idioma)
+    click()  { noise(0.022, 0.10, 3200, 'highpass'); },
+    // Botão mecânico com corpo (play / stop)
+    press()  { noise(0.042, 0.14, 1600, 'bandpass'); thump(110, 0.038, 0.07); },
+    // Interruptor físico (toggle modo CRT)
+    toggle() { noise(0.058, 0.17, 800,  'bandpass'); thump(75,  0.052, 0.11); },
+  };
+})();
+
+/* ── I18N DICTIONARY ── */
+window.I18N = {
+  pt: {
+    'loader': 'inicializando',
+    'tagline': 'arquitetura digital',
+    'sticker.title': 'estratégia · design · tecnologia',
+    'sticker.sub': 'sua presença digital construída com intenção',
+    'wa.status': 'disponível para projetos',
+    'qr.label': 'abrir no celular',
+    'qr.open': 'abrir',
+    'qr.mobile': 'no celular',
+    'sec.services': 'serviços',
+    'sec.howitworks': 'como funciona',
+    'toggle.dark': 'dark',
+    'toggle.light': 'light',
+    'cta.start': 'iniciar projeto',
+    'cta.badge': "let's go",
+    'footer.year': ' © 2026',
+    'footer.rights': 'todos os direitos reservados.',
+    'footer.privacy': 'política de privacidade',
+    'footer.terms': 'termos de uso',
+    'marquee': 'oi, eu sou geōrgia, faço seu site ou produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)',
+    'wa.url': 'https://wa.me/5585996521515?text=Ol%C3%A1!%20Tenho%20interesse%20em%20iniciar%20um%20projeto%20%3A)',
+    'services': [
+      'site institucional','landing page','cartão virtual',
+      'página de evento','link personalizado para bio',
+      'e-commerce','web apps','copywriting'
+    ],
+    'steps': [
+      {label:'contato inicial', desc:'formulário curto — nome, projeto, contexto'},
+      {label:'avaliação', desc:'analiso e proponho o caminho'},
+      {label:'reunião online', desc:'alinhamento de escopo e expectativas'},
+      {label:'proposta', desc:'orçamento com opções de pagamento (PIX ou cartão)'},
+      {label:'contrato + entrada', desc:'50% antes de começar'},
+      {label:'produção', desc:'briefing completo → desenvolvimento'},
+      {label:'entregas + revisões', desc:'duas rodadas incluídas'},
+      {label:'entrega final', desc:'pagamento restante + deploy'}
+    ]
+  },
+  en: {
+    'loader': 'booting',
+    'tagline': 'digital architecture',
+    'sticker.title': 'strategy · design · technology',
+    'sticker.sub': 'your digital presence built with intention',
+    'wa.status': 'available for projects',
+    'qr.label': 'open on mobile',
+    'qr.open': 'open on',
+    'qr.mobile': 'mobile',
+    'sec.services': 'services',
+    'sec.howitworks': 'how it works',
+    'toggle.dark': 'dark',
+    'toggle.light': 'light',
+    'cta.start': 'start project',
+    'cta.badge': "let's go",
+    'footer.year': ' © 2026',
+    'footer.rights': 'all rights reserved.',
+    'footer.privacy': 'privacy policy',
+    'footer.terms': 'terms of use',
+    'marquee': "hi, i'm geōrgia — i design custom websites and digital products, every detail tuned to what you need to communicate :)",
+    'wa.url': 'https://wa.me/5585996521515?text=Hi!%20I%27m%20interested%20in%20starting%20a%20project%20%3A)',
+    'services': [
+      'institutional website','landing page','digital business card',
+      'event page','custom bio link',
+      'e-commerce','web apps','copywriting'
+    ],
+    'steps': [
+      {label:'first contact', desc:'short form — name, project, context'},
+      {label:'evaluation', desc:'i analyze and propose the path'},
+      {label:'online meeting', desc:'aligning scope and expectations'},
+      {label:'proposal', desc:'quote with payment options (PIX or card)'},
+      {label:'contract + deposit', desc:'50% before we start'},
+      {label:'production', desc:'full briefing → development'},
+      {label:'deliveries + revisions', desc:'two rounds included'},
+      {label:'final delivery', desc:'remaining payment + deploy'}
+    ]
+  }
+};
+
+window.CURRENT_LANG = (function(){
+  try {
+    const saved = localStorage.getItem('georgia.lang');
+    if (saved === 'pt' || saved === 'en') return saved;
+  } catch(e){}
+  // auto-detect from browser
+  const nav = (navigator.language || 'pt').toLowerCase();
+  return nav.startsWith('en') ? 'en' : 'pt';
+})();
+
+document.documentElement.setAttribute('lang', window.CURRENT_LANG === 'en' ? 'en' : 'pt-BR');
+
+function applyI18n() {
+  const dict = window.I18N[window.CURRENT_LANG] || window.I18N.pt;
+  // text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] != null) el.textContent = dict[key];
+  });
+  // aria labels
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria');
+    if (dict[key] != null) el.setAttribute('aria-label', dict[key]);
+  });
+  // WhatsApp URLs (3 botões)
+  if (dict['wa.url']) {
+    document.querySelectorAll('.wa-btn, .cta-btn').forEach(a => {
+      a.setAttribute('href', dict['wa.url']);
+    });
+  }
+  // re-render dynamic blocks
+  if (typeof buildLed === 'function') buildLed();
+  if (typeof renderServices === 'function') renderServices();
+  if (typeof renderFlow === 'function') renderFlow();
+}
+
+/* LOADER */
+const loader = document.getElementById('loader');
+const pctNum = document.getElementById('pctNum');
+const pctFill = document.getElementById('pctFill');
+const page    = document.getElementById('page');
+
+function runLoader() {
+  let p = 0;
+  const start = performance.now(), dur = 850;
+  function step(now) {
+    const t = Math.min(1, (now - start) / dur);
+    const e = 1 - Math.pow(1 - t, 1.8);
+    p = Math.round(e * 100);
+    pctNum.textContent = String(p).padStart(3, '0');
+    pctFill.style.width = p + '%';
+    if (t < 1) requestAnimationFrame(step);
+    else setTimeout(() => {
+      loader.classList.add('hide');
+      page.classList.add('enter');
+    }, 120);
+  }
+  requestAnimationFrame(step);
+}
+
+
+
+/* LED MARQUEE */
+function buildLed() {
+  const track = document.getElementById('ledTrack');
+  const text = (window.I18N && window.I18N[window.CURRENT_LANG] && window.I18N[window.CURRENT_LANG]['marquee'])
+    || 'oi, eu sou geōrgia, faço seu site ou produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)';
+  const item = `<span class="led-item"><span class="led-text">${text}</span></span><span class="led-sep">·</span>`;
+  track.innerHTML = item.repeat(14);
+}
+buildLed();
+
+
+/* SERVICES — CRT */
+function getServices() {
+  return (window.I18N && window.I18N[window.CURRENT_LANG] && window.I18N[window.CURRENT_LANG]['services'])
+    || ['site institucional','landing page','cartão virtual',
+        'página de evento','link personalizado para bio',
+        'e-commerce','web apps','copywriting'];
+}
+const services = getServices();
+const crtContent = document.getElementById('crtContent');
+function renderServices() {
+  if (!crtContent) return;
+  const list = getServices();
+  crtContent.innerHTML = list.map((s, i) =>
+    `<div class="crt-item"><span class="crt-num">${String(i+1).padStart(2,'0')}</span>${s}</div>`
+  ).join('');
+}
+renderServices();
+/* FLOW */
+function getSteps_i18n() {
+  return (window.I18N && window.I18N[window.CURRENT_LANG] && window.I18N[window.CURRENT_LANG]['steps']) || [
+    {label:'contato inicial', desc:'formulário curto — nome, projeto, contexto'},
+    {label:'avaliação', desc:'analiso e proponho o caminho'},
+    {label:'reunião online', desc:'alinhamento de escopo e expectativas'},
+    {label:'proposta', desc:'orçamento com opções de pagamento (PIX ou cartão)'},
+    {label:'contrato + entrada', desc:'50% antes de começar'},
+    {label:'produção', desc:'briefing completo → desenvolvimento'},
+    {label:'entregas + revisões', desc:'duas rodadas incluídas'},
+    {label:'entrega final', desc:'pagamento restante + deploy'}
+  ];
+}
+const steps = getSteps_i18n();
+function renderFlow() {
+  const list = getSteps_i18n();
+  document.getElementById('flowSteps').innerHTML = list.map((s,i) => `
+    <div class="flow-step">
+      <div class="step-led-box">
+        <div class="step-led-square">
+          <span class="step-num">${String(i+1).padStart(2,'0')}</span>
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-text"><strong>${s.label}</strong> — ${s.desc}</div>
+      </div>
+    </div>`).join('');
+}
+renderFlow();
+
+runLoader();
+
+/* MODE TOGGLE */
+const toggle = document.getElementById('modeToggle');
+
+let isDark = false;
+
+function applyMode() {
+  const screen = document.getElementById('crtScreen');
+  if (isDark) {
+    toggle.classList.add('is-dark');
+    toggle.classList.remove('is-light');
+    if (screen) { screen.classList.add('mode-dark'); screen.classList.remove('mode-light'); }
+  } else {
+    toggle.classList.add('is-light');
+    toggle.classList.remove('is-dark');
+    if (screen) { screen.classList.add('mode-light'); screen.classList.remove('mode-dark'); }
+  }
+}
+
+toggle.addEventListener('click', () => {
+  SFX.toggle();
+  isDark = !isDark;
+  applyMode();
+});
+
+// Init
+applyMode();
+
+/* ── LANG TOGGLE ── */
+(function initLangToggle() {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+  const buttons = langToggle.querySelectorAll('.lang-flag');
+  function setLang(lang) {
+    window.CURRENT_LANG = lang;
+    try { localStorage.setItem('georgia.lang', lang); } catch(e){}
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-BR');
+    if (lang === 'en') {
+      langToggle.classList.add('is-en');
+      langToggle.classList.remove('is-pt');
+    } else {
+      langToggle.classList.add('is-pt');
+      langToggle.classList.remove('is-en');
+    }
+    buttons.forEach(b => {
+      b.setAttribute('aria-checked', b.dataset.lang === lang ? 'true' : 'false');
+    });
+    applyI18n();
+  }
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => { SFX.click(); setLang(btn.dataset.lang); if (window.renderModalIfOpen) window.renderModalIfOpen(); });
+  });
+  setLang(window.CURRENT_LANG || 'pt');
+})();
+
+/* ── FLOW PLAY / STOP ── */
+let isPlaying = false;
+let playTimer = null;
+
+function getSteps() {
+  return [...document.querySelectorAll('.flow-step')];
+}
+
+function clearAll() {
+  getSteps().forEach(s => s.classList.remove('is-active'));
+}
+
+function lightStep(i, steps) {
+  clearAll();
+  const next = i >= steps.length ? 0 : i;
+  const color = '#FFAA00';
+  const sq = steps[next].querySelector('.step-led-square');
+  const num = steps[next].querySelector('.step-num');
+  steps[next].classList.add('is-active');
+  if (sq) {
+    sq.style.borderColor = color + 'cc';
+    sq.style.background = color + '18';
+    sq.style.boxShadow = `inset 0 0 10px ${color}33, 0 0 10px 3px ${color}44, 0 0 22px 7px ${color}18, 0 1px 0 rgba(255,255,255,0.8)`;
+  }
+  if (num) {
+    num.style.color = color;
+    num.style.textShadow = `0 0 6px ${color}ee, 0 0 14px ${color}88`;
+  }
+  playTimer = setTimeout(() => {
+    steps[next].classList.remove('is-active');
+    if (sq) { sq.style.borderColor = ''; sq.style.background = ''; sq.style.boxShadow = ''; }
+    if (num) { num.style.color = ''; num.style.textShadow = ''; }
+    playTimer = setTimeout(() => {
+      if (isPlaying) lightStep(next + 1, steps);
+    }, 80);
+  }, 350);
+}
+
+function stopSequence() {
+  isPlaying = false;
+  clearTimeout(playTimer);
+  clearAll();
+  document.getElementById('flowPlay').classList.remove('is-playing');
+}
+
+document.getElementById('flowPlay').addEventListener('click', () => {
+  if (isPlaying) return;
+  SFX.press();
+  isPlaying = true;
+  document.getElementById('flowPlay').classList.add('is-playing');
+  lightStep(0, getSteps());
+});
+
+document.getElementById('flowStop').addEventListener('click', () => {
+  SFX.press();
+  stopSequence();
+});
+
+/* ── WA / CTA BUTTONS ── */
+document.querySelectorAll('.wa-btn, .cta-btn').forEach(el => {
+  el.addEventListener('click', () => SFX.press());
+});
+
+/* ── MODAL CONTENT ── */
+const MODAL = {
+  privacy: {
+    pt: {
+      title: 'política de privacidade',
+      body: `
+        <p>Na geōrgia, a transparência é o pilar da nossa tecnologia. Esta política descreve como tratamos os dados coletados neste site para garantir uma presença digital segura e intencional.</p>
+        <h3>1. coleta de dados e finalidade</h3>
+        <p>Tratamos apenas os dados estritamente necessários para a execução dos nossos serviços.</p>
+        <p><strong>Comunicação Direta:</strong> Ao utilizar os links de WhatsApp para iniciar um projeto, os dados fornecidos (nome e número de telefone) são utilizados exclusivamente para o atendimento inicial, suporte e elaboração de propostas comerciais.</p>
+        <p><strong>Sem Marketing Indesejado:</strong> Não utilizamos os seus dados de contacto para listas de transmissão, envio de newsletters ou qualquer outra finalidade de marketing sem o seu consentimento explícito e separado.</p>
+        <h3>2. base legal para o tratamento</h3>
+        <p>O tratamento dos seus dados fundamenta-se no seu consentimento ao iniciar voluntariamente a conversa pelos nossos canais, e em procedimentos preliminares relacionados a contrato, visando atender às suas solicitações de orçamento e consultoria.</p>
+        <h3>3. uso de tecnologias de interface</h3>
+        <p>Para que a sua experiência de navegação seja personalizada e funcional, utilizamos armazenamento local (localStorage) para salvar a sua preferência de idioma (pt ou en) e memorizar a sua escolha de tema de interface. Estas são tecnologias estritamente funcionais e não rastreiam o seu comportamento em outros sites.</p>
+        <h3>4. direitos do usuário</h3>
+        <p>Em conformidade com as leis de proteção de dados (LGPD/RGPD), você possui o direito de solicitar a confirmação da existência de tratamento de dados e a exclusão definitiva dos seus dados de contato de nossa base a qualquer momento. Para isso, basta enviar uma mensagem pelo nosso WhatsApp com o termo "Remover Dados".</p>
+        <h3>5. segurança e compartilhamento</h3>
+        <p>Os seus dados não são vendidos, alugados ou partilhados com terceiros. As conversas via WhatsApp são protegidas por criptografia de ponta a ponta pela plataforma Meta. Internamente, adotamos medidas técnicas para garantir que apenas as pessoas necessárias para o seu projeto tenham acesso às informações partilhadas.</p>
+        <p class="modal-updated">última atualização: abril de 2026.</p>`
+    },
+    en: {
+      title: 'privacy policy',
+      body: `
+        <p>At geōrgia, transparency is the foundation of our technology. This policy describes how we handle the data collected on this website to ensure a secure and intentional digital presence.</p>
+        <h3>1. data collection and purpose</h3>
+        <p>We process only the data strictly necessary for the execution of our services.</p>
+        <p><strong>Direct Communication:</strong> When using the WhatsApp links to start a project, the data provided (such as name and phone number) is used exclusively for initial customer service, support, and the preparation of business proposals.</p>
+        <p><strong>No Unsolicited Marketing:</strong> We do not use your contact information for broadcast lists, newsletters, or any other marketing purposes without your explicit and separate consent.</p>
+        <h3>2. legal basis for processing</h3>
+        <p>The processing of your data is based on your consent when voluntarily initiating a conversation through our channels, and on pre-contractual procedures, aiming to fulfill your requests for quotes and consultancy.</p>
+        <h3>3. use of interface technologies</h3>
+        <p>To ensure your browsing experience is personalized and functional, we use local storage (localStorage) to save your language preference (pt or en) and remember your choice of interface theme. These are strictly functional technologies and do not track your behavior on other websites.</p>
+        <h3>4. user rights</h3>
+        <p>In compliance with data protection laws (GDPR/LGPD), you have the right to request confirmation of the existence of data processing and the permanent deletion of your contact data from our records at any time. To do so, simply send a message via our WhatsApp with the phrase "Remove Data."</p>
+        <h3>5. security and sharing</h3>
+        <p>Your data is not sold, rented, or shared with third parties. Conversations via WhatsApp are protected by end-to-end encryption by the Meta platform. Internally, we adopt technical measures to ensure that only the personnel necessary for your project have access to the information shared.</p>
+        <p class="modal-updated">last updated: april 2026.</p>`
+    }
+  },
+  terms: {
+    pt: {
+      title: 'termos de uso',
+      body: `
+        <p>Bem-vindo à geōrgia. Ao navegar e utilizar este site, você concorda com os termos e condições descritos abaixo. Estes termos visam garantir a transparência e a segurança na nossa relação profissional.</p>
+        <h3>1. natureza dos serviços</h3>
+        <p>A geōrgia é uma plataforma de apresentação de serviços profissionais de estratégia, design e tecnologia. As informações contidas neste site têm caráter informativo sobre o portfólio e as capacidades técnicas oferecidas.</p>
+        <h3>2. propriedade intelectual</h3>
+        <p>Todo o conteúdo deste site — incluindo textos, logótipos, códigos-fonte, animações, design da interface e fotografias — é de propriedade exclusiva da geōrgia ou de seus licenciadores, estando protegido pelas leis de direitos de autor.</p>
+        <p>É proibida a reprodução, cópia ou distribuição de qualquer elemento deste site para fins comerciais sem autorização prévia por escrito.</p>
+        <h3>3. uso do site</h3>
+        <p>O utilizador compromete-se a utilizar o site de forma ética e legal. É estritamente proibido tentar contornar sistemas de segurança ou aceder a áreas restritas do código, utilizar sistemas automatizados (bots, crawlers) que possam sobrecarregar a infraestrutura do site, ou utilizar os canais de contacto para envio de spam ou mensagens de natureza ofensiva.</p>
+        <h3>4. orçamentos e contratação</h3>
+        <p>O envio de uma mensagem ou pedido de orçamento através do site não constitui a celebração de um contrato de prestação de serviços. A relação contratual só é formalizada após o alinhamento de briefing, envio de proposta formal e aceitação mútua das condições específicas de cada projeto.</p>
+        <h3>5. limitação de responsabilidade</h3>
+        <p>Embora nos esforcemos para manter o site atualizado e funcional, a geōrgia não se responsabiliza por interrupções temporárias de acesso devido a falhas técnicas de terceiros, nem por decisões de negócio tomadas pelo utilizador com base apenas nas informações genéricas do site, sem uma consultoria personalizada.</p>
+        <h3>6. alterações e jurisdição</h3>
+        <p>Reservamo-nos o direito de atualizar estes termos a qualquer momento para refletir mudanças nos nossos serviços ou na legislação. Estes termos são regidos pelas leis vigentes e qualquer litígio será resolvido no foro da comarca da sede da geōrgia.</p>`
+    },
+    en: {
+      title: 'terms of use',
+      body: `
+        <p>Welcome to geōrgia. By browsing and using this website, you agree to the terms and conditions described below.</p>
+        <h3>1. scope of services</h3>
+        <p>geōrgia provides professional strategy, design, and technology services. This website serves as a portfolio and a communication channel for potential projects.</p>
+        <h3>2. intellectual property</h3>
+        <p>All content on this site — including text, logos, source code, animations, and interface design — is the exclusive property of geōrgia or its licensors, protected by applicable copyright laws. Reproduction, copying, or distribution of any element for commercial purposes without prior written authorization is strictly prohibited.</p>
+        <h3>3. acceptable use</h3>
+        <p>Users agree to interact with the site lawfully. Any attempt to breach security systems, access restricted code areas, use automated systems (bots, crawlers) that may overload the site's infrastructure, or use contact channels for spam or offensive messages is strictly prohibited.</p>
+        <h3>4. quotes and agreements</h3>
+        <p>Requesting a quote via WhatsApp does not constitute a formal contract. A service agreement is only established after a formal proposal is accepted by both parties.</p>
+        <h3>5. limitation of liability</h3>
+        <p>We are not liable for temporary site downtime due to third-party technical failures, or for business decisions made based solely on general website content without direct professional consultation.</p>
+        <p class="modal-updated">last update: 2026.</p>`
+    }
+  }
+};
+
+/* ── MODAL LOGIC ── */
+(function initModal() {
+  const overlay = document.getElementById('modalOverlay');
+  const titleEl = document.getElementById('modalTitle');
+  const bodyEl  = document.getElementById('modalBody');
+  const closeBtn = document.getElementById('modalClose');
+  let currentKey = null;
+
+  function renderModal() {
+    if (!currentKey) return;
+    const lang = window.CURRENT_LANG || 'pt';
+    const c = MODAL[currentKey][lang] || MODAL[currentKey].pt;
+    titleEl.textContent = c.title;
+    bodyEl.innerHTML = c.body;
+  }
+
+  function openModal(key) {
+    currentKey = key;
+    renderModal();
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    currentKey = null;
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal(); });
+
+  document.querySelectorAll('.foot-btn').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      SFX.click();
+      openModal(el.getAttribute('href') === '#privacidade' ? 'privacy' : 'terms');
+    });
+  });
+
+  window.renderModalIfOpen = function() { if (overlay.classList.contains('is-open')) renderModal(); };
+})();
+
+/* QR CODE — gera QR SVG com o link WA + mensagem */
+(function renderQR() {
+  var el = document.getElementById('heroQR');
+  if (!el) return;
+  if (typeof qrcode === 'undefined') {
+    // lib ainda não carregou; tenta de novo
+    setTimeout(renderQR, 50);
+    return;
+  }
+  var url = 'https://wa.me/5585996521515?text=' + encodeURIComponent('Olá! Tenho interesse em iniciar um projeto :)');
+  var qr = qrcode(0, 'M');
+  qr.addData(url);
+  qr.make();
+  el.innerHTML = qr.createSvgTag({ scalable: true, margin: 0 });
+})();
+</script>
+</body>
+</html>

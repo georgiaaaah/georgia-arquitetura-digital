@@ -1,0 +1,35 @@
+
+
+Privacy Policy
+
+At geōrgia, transparency is the foundation of our technology. This policy describes how we handle the data collected on this website to ensure a secure and intentional digital presence.
+
+1. Data Collection and Purpose
+We process only the data strictly necessary for the execution of our services:
+
+Direct Communication: When using the WhatsApp links to start a project, the data provided (such as name and phone number) is used exclusively for initial customer service, support, and the preparation of business proposals.
+
+No Unsolicited Marketing: We do not use your contact information for broadcast lists, newsletters, or any other marketing purposes without your explicit and separate consent.
+
+2. Legal Basis for Processing
+The processing of your data is based on your consent when voluntarily initiating a conversation through our channels, and on pre-contractual procedures, aiming to fulfill your requests for quotes and consultancy.
+
+3. Use of Interface Technologies (Cookies and LocalStorage)
+To ensure your browsing experience is personalized and functional, we use local storage (localStorage) to:
+
+Save your language preference (pt or en).
+
+Remember your choice of interface theme (Dark or Light).
+These are strictly functional technologies and do not track your behavior on other websites.
+
+4. User Rights (Access and Deletion)
+In compliance with data protection laws (GDPR/LGPD), you have the right to:
+
+Request confirmation of the existence of data processing.
+
+Request the permanent deletion of your contact data from our records at any time. To do so, simply send a message via our WhatsApp with the phrase "Remove Data."
+
+5. Security and Sharing
+Your data is not sold, rented, or shared with third parties. Conversations via WhatsApp are protected by end-to-end encryption by the Meta platform. Internally, we adopt technical measures to ensure that only the personnel necessary for your project have access to the information shared.
+
+Last updated: April 2026.
