@@ -2803,7 +2803,7 @@ applyMode();
     applyI18n();
   }
   buttons.forEach(btn => {
-    btn.addEventListener('click', () => { SFX.click(); setLang(btn.dataset.lang); if (window.renderModalIfOpen) window.renderModalIfOpen(); });
+    btn.addEventListener('click', () => { SFX.click(); setLang(btn.dataset.lang); renderQR(); if (window.renderModalIfOpen) window.renderModalIfOpen(); });
   });
   setLang(window.CURRENT_LANG || 'pt');
 })();
@@ -2995,20 +2995,18 @@ const MODAL = {
 })();
 
 /* QR CODE — gera QR SVG com o link WA + mensagem */
-(function renderQR() {
+function renderQR() {
   var el = document.getElementById('heroQR');
   if (!el) return;
-  if (typeof qrcode === 'undefined') {
-    // lib ainda não carregou; tenta de novo
-    setTimeout(renderQR, 50);
-    return;
-  }
-  var url = 'https://wa.me/5585996521515?text=' + encodeURIComponent('Olá! Tenho interesse em iniciar um projeto :)');
+  if (typeof qrcode === 'undefined') { setTimeout(renderQR, 50); return; }
+  var lang = window.CURRENT_LANG || 'pt';
+  var url = window.I18N[lang]['wa.url'];
   var qr = qrcode(0, 'M');
   qr.addData(url);
   qr.make();
   el.innerHTML = qr.createSvgTag({ scalable: true, margin: 0 });
-})();
+}
+renderQR();
 </script>
 </body>
 </html>
