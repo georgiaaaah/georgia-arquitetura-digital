@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/georgia-landing-april26.html" }
+  ]
+}

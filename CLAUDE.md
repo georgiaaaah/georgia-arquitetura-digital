@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **design handoff bundle** from Claude Design. The files are HTML/CSS/JS prototypes — not production code. The goal is to implement them pixel-perfectly in a real production stack (React, Next.js, etc.).
 
-**Primary design file:** `georgia-landing-TV_9.html` — read it top to bottom before touching anything else. The other HTML files (`-bundle-src`, `-standalone-src`) are alternate exports of the same design.
+**Primary design file:** `georgia-landing-april26.html` — read it top to bottom before touching anything else. The other HTML files (`-bundle-src`, `-standalone-src`) are alternate exports of the original design handoff.
 
 There is no build system, package.json, or test suite. Open any `.html` file directly in a browser to preview.
 
