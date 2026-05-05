@@ -2080,13 +2080,17 @@ body {
     align-items: center !important;
     justify-content: center !important;
   }
-  /* Lang slot on mobile: flags left, member button right */
+  /* Lang slot on mobile: flags centered left, member button right */
   .lang-slot {
     width: 100% !important;
     justify-content: space-between !important;
     align-items: center !important;
-    margin: 0.5rem 0 -0.25rem 0 !important;
+    margin: 1rem 0 -0.6rem 0 !important;
     align-self: auto !important;
+  }
+  .lang-slot .lang-toggle {
+    flex: 1;
+    justify-content: center;
   }
   .lang-flag {
     width: 30px; height: 30px;
