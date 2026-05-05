@@ -1411,6 +1411,78 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* ── MEMBER ACCESS BUTTON ── */
+.member-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  height: 36px;
+  border-radius: 6px;
+  background: linear-gradient(145deg, var(--chassis), var(--chassis-2));
+  border: 1px solid rgba(0,0,0,0.14);
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  box-shadow:
+    0 4px 0 rgba(0,0,0,0.18),
+    0 6px 12px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.05s ease-out;
+  position: relative;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.member-btn::after {
+  content: "";
+  position: absolute;
+  top: 4px; left: 50%;
+  transform: translateX(-50%);
+  width: 50%; height: 5px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 3px;
+  filter: blur(3px);
+  pointer-events: none;
+}
+.member-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 0 rgba(0,0,0,0.18),
+    0 8px 16px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
+}
+.member-btn:active {
+  transform: translateY(3px);
+  border-bottom-width: 1px;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.1),
+    0 2px 4px rgba(0,0,0,0.1),
+    inset 0 1px 3px rgba(0,0,0,0.08);
+}
+.member-btn svg {
+  width: 13px; height: 13px;
+  stroke: var(--text-mid);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.member-btn .btn-label {
+  position: relative;
+  z-index: 1;
+}
+
 /* ── SERVICES DARK MODE ── */
 .services-grid.mode-dark .service-item {
   background: #1a1a1a;
@@ -2048,6 +2120,12 @@ body {
     width: 17px; height: 4px;
     top: 3px;
   }
+  .member-btn {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 0.5rem;
+    gap: 5px;
+  }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .services-header { flex-wrap: wrap; gap: 1rem; }
   /* Badge — adesivo de fábrica colado sobre o chassi,
@@ -2264,7 +2342,7 @@ body {
       <h1 class="tagline-sub" data-i18n="tagline">arquitetura digital</h1>
       </div><!-- /logo-col -->
       <div class="lang-slot" id="langSlot">
-        <div class="lang-toggle is-pt" id="langToggle" role="radiogroup" aria-label="alternar idioma / switch language">
+        <div class="lang-toggle is-pt" id="langToggle" role="group" aria-label="alternar idioma / switch language">
           <button type="button" class="lang-flag flag-pt" data-lang="pt" role="radio" aria-checked="true" aria-label="Português" tabindex="0">
             <!-- Brazil flag (simplified circular) -->
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2274,6 +2352,13 @@ body {
               <path d="M10.5 14.5 Q16 13 21.5 14.5" stroke="#fff" stroke-width="0.9" fill="none" stroke-linecap="round"/>
             </svg>
           </button>
+          <a class="member-btn mobile-only" href="#" aria-label="área de membros" onclick="SFX.click()">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8" cy="5.5" r="2.5"/>
+              <path d="M2.5 14.5c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/>
+            </svg>
+            <span class="btn-label" data-i18n="member.cta">acessar</span>
+          </a>
           <button type="button" class="lang-flag flag-en" data-lang="en" role="radio" aria-checked="false" aria-label="English" tabindex="0">
             <!-- UK flag (simplified circular) -->
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2286,6 +2371,13 @@ body {
           </button>
         </div>
       </div>
+      <a class="member-btn desktop-only" href="#" aria-label="área de membros" onclick="SFX.click()">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="8" cy="5.5" r="2.5"/>
+          <path d="M2.5 14.5c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/>
+        </svg>
+        <span class="btn-label" data-i18n="member.cta">acessar</span>
+      </a>
       <div class="header-right-desktop">
         <div class="sticker sticker-header desktop-only">
           <div class="sticker-body">
@@ -2594,6 +2686,7 @@ window.I18N = {
     'footer.rights': 'todos os direitos reservados.',
     'footer.privacy': 'política de privacidade',
     'footer.terms': 'termos de uso',
+    'member.cta': 'acessar',
     'marquee': 'oi, eu sou geōrgia, faço seu site ou produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)',
     'wa.url': 'https://wa.me/5585996521515?text=Ol%C3%A1!%20Tenho%20interesse%20em%20iniciar%20um%20projeto%20%3A)',
     'services': [
@@ -2631,6 +2724,7 @@ window.I18N = {
     'footer.rights': 'all rights reserved.',
     'footer.privacy': 'privacy policy',
     'footer.terms': 'terms of use',
+    'member.cta': 'access',
     'marquee': "hi, i'm geōrgia — i design custom websites and digital products, every detail tuned to what you need to communicate :)",
     'wa.url': 'https://wa.me/5585996521515?text=Hi!%20I%27m%20interested%20in%20starting%20a%20project%20%3A)',
     'services': [
