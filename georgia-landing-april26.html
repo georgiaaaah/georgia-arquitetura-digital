@@ -1418,15 +1418,18 @@ body {
   padding: 0 14px;
   height: 34px;
   border-radius: 4px;
-  background: #e0e2e2;
-  border: 1.5px solid rgba(0,0,0,0.16);
+  background: linear-gradient(145deg, #eaecec, #d6d8d8);
+  border: 1px solid rgba(0,0,0,0.16);
+  border-bottom: 3px solid rgba(0,0,0,0.22);
   box-shadow:
-    inset 0 2px 4px rgba(0,0,0,0.14),
-    inset 0 1px 2px rgba(0,0,0,0.08),
-    0 1px 0 rgba(255,255,255,0.85);
+    0 4px 0 rgba(0,0,0,0.15),
+    0 5px 10px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.08s ease;
+  transition: all 0.05s ease-out;
+  position: relative;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   font-weight: 600;
@@ -1435,15 +1438,32 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
+.member-btn::after {
+  content: "";
+  position: absolute;
+  top: 4px; left: 50%;
+  transform: translateX(-50%);
+  width: 50%; height: 4px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 3px;
+  filter: blur(3px);
+  pointer-events: none;
+}
 .member-btn:hover {
-  background: #d8dadb;
-  border-color: rgba(0,0,0,0.22);
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 0 rgba(0,0,0,0.15),
+    0 7px 14px rgba(0,0,0,0.13),
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
 }
 .member-btn:active {
+  transform: translateY(3px);
+  border-bottom-width: 1px;
   box-shadow:
-    inset 0 3px 6px rgba(0,0,0,0.18),
-    inset 0 1px 3px rgba(0,0,0,0.12),
-    0 1px 0 rgba(255,255,255,0.7);
+    0 1px 0 rgba(0,0,0,0.10),
+    0 2px 4px rgba(0,0,0,0.08),
+    inset 0 1px 3px rgba(0,0,0,0.08);
 }
 .member-btn svg {
   width: 13px; height: 13px;
@@ -1453,9 +1473,10 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   flex-shrink: 0;
+  position: relative; z-index: 1;
 }
 .member-btn .btn-label {
-  position: relative;
+  position: relative; z-index: 1;
 }
 
 /* ── SERVICES DARK MODE ── */
@@ -2346,7 +2367,7 @@ body {
             </svg>
           </button>
         </div>
-        <a class="member-btn mobile-only" href="https://cliente.georgia.app.br/" target="_blank" rel="noopener" aria-label="área de membros" onclick="SFX.click()">
+        <a class="member-btn mobile-only" href="https://cliente.georgia.app.br/" target="_blank" rel="noopener" aria-label="área de membros">
           <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="8" cy="5.5" r="2.5"/>
             <path d="M2.5 14.5c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/>
@@ -2354,7 +2375,7 @@ body {
           <span class="btn-label" data-i18n="member.cta">painel do cliente</span>
         </a>
       </div>
-      <a class="member-btn desktop-only" href="https://cliente.georgia.app.br/" target="_blank" rel="noopener" aria-label="área de membros" onclick="SFX.click()">
+      <a class="member-btn desktop-only" href="https://cliente.georgia.app.br/" target="_blank" rel="noopener" aria-label="área de membros">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <circle cx="8" cy="5.5" r="2.5"/>
           <path d="M2.5 14.5c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/>
@@ -2964,7 +2985,7 @@ document.getElementById('flowStop').addEventListener('click', () => {
 });
 
 /* ── WA / CTA BUTTONS ── */
-document.querySelectorAll('.wa-btn, .cta-btn').forEach(el => {
+document.querySelectorAll('.wa-btn, .cta-btn, .member-btn').forEach(el => {
   el.addEventListener('click', () => SFX.press());
 });
 
