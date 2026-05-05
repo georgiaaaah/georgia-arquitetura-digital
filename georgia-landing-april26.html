@@ -2080,10 +2080,13 @@ body {
     align-items: center !important;
     justify-content: center !important;
   }
-  /* Lang toggle on mobile: centered + slightly smaller */
+  /* Lang slot on mobile: flags left, member button right */
   .lang-slot {
-    align-self: center !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     margin: 0.5rem 0 -0.25rem 0 !important;
+    align-self: auto !important;
   }
   .lang-flag {
     width: 30px; height: 30px;
@@ -2317,7 +2320,7 @@ body {
       <h1 class="tagline-sub" data-i18n="tagline">arquitetura digital</h1>
       </div><!-- /logo-col -->
       <div class="lang-slot" id="langSlot">
-        <div class="lang-toggle is-pt" id="langToggle" role="group" aria-label="alternar idioma / switch language">
+        <div class="lang-toggle is-pt" id="langToggle" role="radiogroup" aria-label="alternar idioma / switch language">
           <button type="button" class="lang-flag flag-pt" data-lang="pt" role="radio" aria-checked="true" aria-label="Português" tabindex="0">
             <!-- Brazil flag (simplified circular) -->
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2327,13 +2330,6 @@ body {
               <path d="M10.5 14.5 Q16 13 21.5 14.5" stroke="#fff" stroke-width="0.9" fill="none" stroke-linecap="round"/>
             </svg>
           </button>
-          <a class="member-btn mobile-only" href="https://cliente.georgia.app.br" target="_blank" rel="noopener" aria-label="área de membros" onclick="SFX.click()">
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="8" cy="5.5" r="2.5"/>
-              <path d="M2.5 14.5c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/>
-            </svg>
-            <span class="btn-label" data-i18n="member.cta">acessar</span>
-          </a>
           <button type="button" class="lang-flag flag-en" data-lang="en" role="radio" aria-checked="false" aria-label="English" tabindex="0">
             <!-- UK flag (simplified circular) -->
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2345,6 +2341,13 @@ body {
             </svg>
           </button>
         </div>
+        <a class="member-btn mobile-only" href="https://cliente.georgia.app.br" target="_blank" rel="noopener" aria-label="área de membros" onclick="SFX.click()">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="8" cy="5.5" r="2.5"/>
+            <path d="M2.5 14.5c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/>
+          </svg>
+          <span class="btn-label" data-i18n="member.cta">painel do cliente</span>
+        </a>
       </div>
       <a class="member-btn desktop-only" href="https://cliente.georgia.app.br" target="_blank" rel="noopener" aria-label="área de membros" onclick="SFX.click()">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
