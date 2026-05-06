@@ -2133,8 +2133,9 @@ body {
   .panel-header {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding-top: 2.75rem;
+    gap: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
   .logo-wrap {
     width: clamp(160px, 58vw, 260px);
@@ -2153,18 +2154,22 @@ body {
     align-items: center !important;
     justify-content: center !important;
   }
-  /* Lang slot on mobile: flags centered left, member button right */
+  /* Lang slot no mobile: sobe acima da logo via order */
   .lang-slot {
+    order: -1;
     width: 100% !important;
     justify-content: space-between !important;
     align-items: center !important;
-    margin: 1rem 0 -0.6rem 0 !important;
+    margin: 0 !important;
     align-self: auto !important;
-    padding-right: 2rem !important;
+    padding: 0.5rem 0.25rem 0 !important;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 0.75rem !important;
   }
   .lang-slot .lang-toggle {
     flex: 1;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
   }
   .lang-flag {
     width: 30px; height: 30px;
