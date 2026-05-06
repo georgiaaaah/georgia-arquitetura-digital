@@ -676,6 +676,8 @@ body {
   .flow-steps {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
     gap: 0 3rem;
   }
   .flow-step:nth-child(4) { border-bottom: none; }
@@ -3039,6 +3041,7 @@ applyMode();
 /* ── FLOW PLAY / STOP ── */
 let isPlaying = false;
 let playTimer = null;
+let currentStep = 0;
 
 function getSteps() {
   return [...document.querySelectorAll('.flow-step')];
@@ -3051,6 +3054,7 @@ function clearAll() {
 function lightStep(i, steps) {
   clearAll();
   const next = i >= steps.length ? 0 : i;
+  currentStep = next;
   const color = '#FFAA00';
   const sq = steps[next].querySelector('.step-led-square');
   const num = steps[next].querySelector('.step-num');
@@ -3087,7 +3091,7 @@ document.getElementById('flowPlay').addEventListener('click', () => {
   SFX.press();
   isPlaying = true;
   document.getElementById('flowPlay').classList.add('is-playing');
-  lightStep(0, getSteps());
+  lightStep(currentStep, getSteps());
 });
 
 document.getElementById('flowStop').addEventListener('click', () => {
