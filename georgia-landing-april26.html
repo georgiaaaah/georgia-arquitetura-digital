@@ -341,15 +341,6 @@ body {
   .header-right-desktop { display: none; }
   .lang-slot { align-self: center; margin: 0; margin-left: auto; }
 
-  /* Hero copy — grid duas colunas iguais */
-  .panel-hero-copy {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 2.5rem 3.5rem;
-    gap: 3rem;
-  }
-
   /* Coluna esquerda: sticker centralizado */
   .panel-hero-copy .sticker-wrap {
     display: flex;
@@ -496,6 +487,15 @@ body {
   background: var(--chassis);
   display: flex;
   flex-direction: column;
+}
+@media (min-width: 769px) {
+  .panel-hero-copy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 2.5rem 3.5rem;
+    gap: 3rem;
+  }
 }
 .hero-copy-desktop {
   display: block;
