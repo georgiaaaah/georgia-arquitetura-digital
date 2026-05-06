@@ -1424,13 +1424,15 @@ body {
   box-shadow:
     0 3px 0 rgba(0,0,0,0.18),
     0 5px 9px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(8,236,243,0.30),
+    0 0 9px 1px rgba(8,236,243,0.12),
     inset 0 1px 0 rgba(255,255,255,1),
     inset 0 -1px 0 rgba(0,0,0,0.06);
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.06s ease-out, box-shadow 0.06s ease-out, border-bottom-width 0.06s ease-out, opacity 0.06s ease-out;
   position: relative;
-  opacity: 0.78;
+  opacity: 0.88;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   font-weight: 600;
@@ -1466,7 +1468,7 @@ body {
 }
 .member-btn svg {
   width: 13px; height: 13px;
-  fill: rgba(0,0,0,0.45);
+  fill: var(--teal);
   flex-shrink: 0;
   position: relative; z-index: 1;
 }
