@@ -6,7 +6,7 @@
 <title>geōrgia. — presença digital construída com intenção</title>
 
 <!-- SEO -->
-<meta name="description" content="oi, eu sou geōrgia. faço seu site ou produto digital sob medida — estratégia, design e tecnologia, cada detalhe calibrado pra o que você precisa comunicar.">
+<meta name="description" content="oi, eu sou geōrgia. faço o seu produto digital sob medida — estratégia, design e tecnologia, cada detalhe calibrado pra o que você precisa comunicar.">
 <meta name="author" content="geōrgia">
 <meta name="theme-color" content="#f0f1f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
@@ -2127,7 +2127,7 @@ body {
   .panel-section,
   .panel-footer,
   .panel-cta { padding-left: calc(var(--wood-w) + 1.25rem); padding-right: calc(var(--wood-w) + 1.25rem); }
-  .panel-led { margin: 0 0; }
+  .panel-led { margin: 0 1rem; border-radius: 6px; }
   .divisoria::before { left: calc(var(--wood-w) + 0.75rem); }
   .divisoria::after  { right: calc(var(--wood-w) + 0.75rem); }
   .panel-header {
@@ -2164,9 +2164,8 @@ body {
     align-items: center !important;
     margin: 0 !important;
     align-self: auto !important;
-    padding: 0.5rem 0.25rem 0 !important;
+    padding: 1.1rem 0.25rem 0.75rem !important;
     border-bottom: 1px solid var(--divider);
-    padding-bottom: 0.75rem !important;
   }
   .lang-slot .lang-toggle {
     flex: 1;
@@ -2751,7 +2750,7 @@ window.I18N = {
     'footer.privacy': 'política de privacidade',
     'footer.terms': 'termos de uso',
     'member.cta': 'painel do cliente',
-    'marquee': 'oi, eu sou geōrgia, faço seu site ou produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)',
+    'marquee': 'oi, eu sou geōrgia, faço o seu produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)',
     'wa.url': 'https://wa.me/5585996521515?text=Ol%C3%A1!%20Tenho%20interesse%20em%20iniciar%20um%20projeto%20%3A)',
     'services': [
       'site institucional','landing pages','saas & sistemas de automação',
@@ -2875,7 +2874,7 @@ function runLoader() {
 function buildLed() {
   const track = document.getElementById('ledTrack');
   const text = (window.I18N && window.I18N[window.CURRENT_LANG] && window.I18N[window.CURRENT_LANG]['marquee'])
-    || 'oi, eu sou geōrgia, faço seu site ou produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)';
+    || 'oi, eu sou geōrgia, faço o seu produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)';
   const item = `<span class="led-item"><span class="led-text">${text}</span></span><span class="led-sep">·</span>`;
   track.innerHTML = item.repeat(14);
 }
