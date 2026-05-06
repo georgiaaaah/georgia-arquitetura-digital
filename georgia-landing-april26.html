@@ -672,6 +672,14 @@ body {
 .flow-steps {
   display: flex; flex-direction: column;
 }
+@media (min-width: 769px) {
+  .flow-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3rem;
+  }
+  .flow-step:nth-child(4) { border-bottom: none; }
+}
 
 .flow-step {
   display: flex;
