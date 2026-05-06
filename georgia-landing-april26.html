@@ -791,6 +791,27 @@ body {
   font-weight: 500; color: var(--text-main);
 }
 
+/* Label — muted quando inativo */
+.step-label-text {
+  opacity: 0.38;
+  transition: opacity 0.4s ease;
+}
+.flow-step.is-active .step-label-text {
+  opacity: 1;
+}
+
+/* Descrição — oculta quando inativo, revela com fade */
+.step-desc-text {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.35s ease;
+}
+.flow-step.is-active .step-desc-text {
+  max-height: 2rem;
+  opacity: 1;
+}
+
 /* ────────────────────────────────────────
    FOOTER STRIP
 ──────────────────────────────────────── */
@@ -2780,18 +2801,18 @@ const SFX = (() => {
     press()  { noise(0.042, 0.14, 1600, 'bandpass'); thump(110, 0.038, 0.07); },
     // Interruptor físico (toggle modo CRT)
     toggle() { noise(0.058, 0.17, 800,  'bandpass'); thump(75,  0.052, 0.11); },
-    // LED acendendo — blip eletrônico suave
+    // LED acendendo — toque suave, frequência baixa
     blip() {
       const c = getCtx();
       const osc = c.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(1200, c.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, c.currentTime + 0.05);
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(480, c.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(320, c.currentTime + 0.12);
       const g = c.createGain();
-      g.gain.setValueAtTime(0.07, c.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.07);
+      g.gain.setValueAtTime(0.04, c.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.14);
       osc.connect(g); g.connect(c.destination);
-      osc.start(); osc.stop(c.currentTime + 0.075);
+      osc.start(); osc.stop(c.currentTime + 0.15);
     },
   };
 })();
@@ -2990,7 +3011,8 @@ function renderFlow() {
         </div>
       </div>
       <div class="step-content">
-        <div class="step-text"><strong>${s.label}</strong> — ${s.desc}</div>
+        <div class="step-text step-label-text"><strong>${s.label}</strong></div>
+        <div class="step-text step-desc-text"> — ${s.desc}</div>
       </div>
     </div>`).join('');
 }
@@ -3090,7 +3112,7 @@ function lightStep(i, steps) {
     playTimer = setTimeout(() => {
       if (isPlaying) lightStep(next + 1, steps);
     }, 80);
-  }, 350);
+  }, 2000);
 }
 
 function stopSequence() {
