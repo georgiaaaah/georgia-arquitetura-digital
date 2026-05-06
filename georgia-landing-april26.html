@@ -2692,9 +2692,9 @@ window.I18N = {
     'marquee': 'oi, eu sou geōrgia, faço seu site ou produto digital sob medida, cada detalhe calibrado pra o que você precisa comunicar :)',
     'wa.url': 'https://wa.me/5585996521515?text=Ol%C3%A1!%20Tenho%20interesse%20em%20iniciar%20um%20projeto%20%3A)',
     'services': [
-      'site institucional','landing page','cartão virtual',
-      'página de evento','link personalizado para bio',
-      'e-commerce','web apps','copywriting'
+      'site institucional','landing pages','saas & sistemas de automação',
+      'páginas de eventos','e-commerce',
+      'web apps & dashboards','seo & copywriting'
     ],
     'steps': [
       {label:'contato inicial', desc:'formulário curto — nome, projeto, contexto'},
@@ -2730,9 +2730,9 @@ window.I18N = {
     'marquee': "hi, i'm geōrgia — i design custom websites and digital products, every detail tuned to what you need to communicate :)",
     'wa.url': 'https://wa.me/5585996521515?text=Hi!%20I%27m%20interested%20in%20starting%20a%20project%20%3A)',
     'services': [
-      'institutional website','landing page','digital business card',
-      'event page','custom bio link',
-      'e-commerce','web apps','copywriting'
+      'institutional website','landing pages','saas & automation systems',
+      'event pages','e-commerce',
+      'web apps & dashboards','seo & copywriting'
     ],
     'steps': [
       {label:'first contact', desc:'short form — name, project, context'},
@@ -2823,9 +2823,9 @@ buildLed();
 /* SERVICES — CRT */
 function getServices() {
   return (window.I18N && window.I18N[window.CURRENT_LANG] && window.I18N[window.CURRENT_LANG]['services'])
-    || ['site institucional','landing page','cartão virtual',
-        'página de evento','link personalizado para bio',
-        'e-commerce','web apps','copywriting'];
+    || ['site institucional','landing pages','saas & sistemas de automação',
+        'páginas de eventos','e-commerce',
+        'web apps & dashboards','seo & copywriting'];
 }
 const services = getServices();
 const crtContent = document.getElementById('crtContent');
