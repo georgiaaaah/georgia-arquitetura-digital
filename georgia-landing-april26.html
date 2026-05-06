@@ -2127,7 +2127,7 @@ body {
   .panel-section,
   .panel-footer,
   .panel-cta { padding-left: calc(var(--wood-w) + 1.25rem); padding-right: calc(var(--wood-w) + 1.25rem); }
-  .panel-led { margin: 1.25rem calc(var(--wood-w) + 0.75rem); }
+  .panel-led { margin: 0 0; }
   .divisoria::before { left: calc(var(--wood-w) + 0.75rem); }
   .divisoria::after  { right: calc(var(--wood-w) + 0.75rem); }
   .panel-header {
@@ -2135,8 +2135,10 @@ body {
     align-items: center;
     gap: 1.25rem;
     padding-top: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: none;
   }
+  .logo-col { margin-top: 0.75rem; }
   .logo-wrap {
     width: clamp(160px, 58vw, 260px);
   }
