@@ -752,11 +752,7 @@ body {
   inset: -6px;
   border-radius: 9px;
   opacity: 0;
-  background: radial-gradient(circle,
-    rgba(255,170,0,0.4) 0%,
-    rgba(222,5,56,0.2) 45%,
-    rgba(8,236,243,0.1) 70%,
-    transparent 100%);
+  background: radial-gradient(circle, rgba(255,170,0,0.45) 0%, transparent 68%);
   transition: opacity 0.3s ease;
   z-index: 0;
   pointer-events: none;
@@ -765,15 +761,11 @@ body {
 /* ON state */
 .flow-step.is-active .step-led-square {
   border-color: rgba(255,170,0,0.8);
-  background: linear-gradient(135deg,
-    rgba(255,170,0,0.14) 0%,
-    rgba(222,5,56,0.08) 50%,
-    rgba(8,236,243,0.06) 100%);
+  background: rgba(255,170,0,0.1);
   box-shadow:
-    inset 0 0 10px rgba(255,170,0,0.28),
-    0 0  8px 2px rgba(255,170,0,0.32),
-    0 0 18px 5px rgba(222,5,56,0.16),
-    0 0 30px 8px rgba(8,236,243,0.10),
+    inset 0 0 12px rgba(255,170,0,0.3),
+    0 0 10px 3px rgba(255,170,0,0.22),
+    0 0 22px 7px rgba(255,170,0,0.08),
     0 1px 0 rgba(255,255,255,0.8);
 }
 .flow-step.is-active .step-led-square::before {
@@ -782,9 +774,8 @@ body {
 .flow-step.is-active .step-num {
   color: #FFAA00;
   text-shadow:
-    0 0  6px rgba(255,170,0,0.95),
-    0 0 14px rgba(222,5,56,0.55),
-    0 0 26px rgba(8,236,243,0.32);
+    0 0 6px rgba(255,170,0,0.9),
+    0 0 14px rgba(255,170,0,0.5);
 }
 
 /* Step content */
@@ -3104,27 +3095,24 @@ function clearAll() {
   });
 }
 
-function applyLed(sq, num) {
-  if (sq) {
-    sq.style.borderColor = 'rgba(255,170,0,0.8)';
-    sq.style.background = 'linear-gradient(135deg,rgba(255,170,0,0.14) 0%,rgba(222,5,56,0.08) 50%,rgba(8,236,243,0.06) 100%)';
-    sq.style.boxShadow = 'inset 0 0 10px rgba(255,170,0,0.28),0 0 8px 2px rgba(255,170,0,0.32),0 0 18px 5px rgba(222,5,56,0.16),0 0 30px 8px rgba(8,236,243,0.10),0 1px 0 rgba(255,255,255,0.8)';
-  }
-  if (num) {
-    num.style.color = '#FFAA00';
-    num.style.textShadow = '0 0 6px rgba(255,170,0,0.95),0 0 14px rgba(222,5,56,0.55),0 0 26px rgba(8,236,243,0.32)';
-  }
-}
-
 function lightStep(i, steps) {
   clearAll();
   const next = i >= steps.length ? 0 : i;
   currentStep = next;
+  const color = '#FFAA00';
   const sq = steps[next].querySelector('.step-led-square');
   const num = steps[next].querySelector('.step-num');
   steps[next].classList.add('is-active');
   SFX.blip();
-  applyLed(sq, num);
+  if (sq) {
+    sq.style.borderColor = color + 'cc';
+    sq.style.background = color + '18';
+    sq.style.boxShadow = `inset 0 0 10px ${color}33, 0 0 10px 3px ${color}44, 0 0 22px 7px ${color}18, 0 1px 0 rgba(255,255,255,0.8)`;
+  }
+  if (num) {
+    num.style.color = color;
+    num.style.textShadow = `0 0 6px ${color}ee, 0 0 14px ${color}88`;
+  }
   playTimer = setTimeout(() => {
     steps[next].classList.remove('is-active');
     if (sq) { sq.style.borderColor = ''; sq.style.background = ''; sq.style.boxShadow = ''; }
@@ -3155,7 +3143,15 @@ function showStep(i, steps) {
   const num = steps[next].querySelector('.step-num');
   steps[next].classList.add('is-active');
   SFX.blip();
-  applyLed(sq, num);
+  if (sq) {
+    sq.style.borderColor = '#FFAA00cc';
+    sq.style.background = '#FFAA0018';
+    sq.style.boxShadow = `inset 0 0 10px #FFAA0033, 0 0 10px 3px #FFAA0044, 0 0 22px 7px #FFAA0018, 0 1px 0 rgba(255,255,255,0.8)`;
+  }
+  if (num) {
+    num.style.color = '#FFAA00';
+    num.style.textShadow = `0 0 6px #FFAA00ee, 0 0 14px #FFAA0088`;
+  }
 }
 
 document.getElementById('flowPlay').addEventListener('click', () => {
