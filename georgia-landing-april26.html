@@ -352,26 +352,35 @@ body {
     transform: rotate(-2deg);
   }
 
-  /* Coluna direita: WA+QR em grid interno */
+  /* Coluna direita: WA+QR numa linha, alinhado à direita */
   .panel-hero-copy .wa-zone.mobile-only {
-    display: grid !important;
-    grid-template-columns: auto 1fr;
+    display: flex !important;
+    flex-direction: row;
     align-items: center;
-    gap: 0.5rem 0.85rem;
-    justify-self: start;
+    gap: 0.85rem;
+    justify-self: end;
     margin: 0;
   }
 
-  /* QR ocupa linha inteira abaixo do WA btn + status */
+  /* QR vai para a esquerda do WA btn via order */
   .panel-hero-copy .hero-qr {
-    grid-column: 1 / -1;
+    order: -1;
     display: flex;
     margin-left: 0;
     padding-left: 0;
     border-left: none;
-    border-top: 1px solid rgba(0,0,0,0.09);
-    padding-top: 0.85rem;
-    margin-top: 0.25rem;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  /* Borda verde no QR, sem label */
+  .panel-hero-copy .hero-qr-img {
+    border: 2px solid var(--wa-green);
+    box-shadow: 0 0 0 1px rgba(37,211,102,0.25), 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .panel-hero-copy .hero-qr-label {
+    display: none;
   }
 }
 /* ────────────────────────────────────────
