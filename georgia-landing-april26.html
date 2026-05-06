@@ -3086,7 +3086,13 @@ function getSteps() {
 }
 
 function clearAll() {
-  getSteps().forEach(s => s.classList.remove('is-active'));
+  getSteps().forEach(s => {
+    s.classList.remove('is-active');
+    const sq = s.querySelector('.step-led-square');
+    const num = s.querySelector('.step-num');
+    if (sq) { sq.style.borderColor = ''; sq.style.background = ''; sq.style.boxShadow = ''; }
+    if (num) { num.style.color = ''; num.style.textShadow = ''; }
+  });
 }
 
 function lightStep(i, steps) {
@@ -3120,8 +3126,11 @@ function lightStep(i, steps) {
 function stopSequence() {
   isPlaying = false;
   clearTimeout(playTimer);
-  clearAll();
   document.getElementById('flowPlay').classList.remove('is-playing');
+  // Mantém o step atual visível; se nenhum estiver ativo, mostra o currentStep
+  const steps = getSteps();
+  const hasActive = steps.some(s => s.classList.contains('is-active'));
+  if (!hasActive) showStep(currentStep, steps);
 }
 
 function showStep(i, steps) {
