@@ -2649,11 +2649,17 @@ body {
       <div class="flow-header">
         <p class="section-label" style="margin-bottom:0;" data-i18n="sec.howitworks">como funciona</p>
         <div class="flow-controls">
+          <button class="flow-btn" id="flowPrev" aria-label="Anterior">
+            <svg viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="2" width="2.5" height="12" rx="0.5"/><path d="M13 3L6 8l7 5V3z"/></svg>
+          </button>
           <button class="flow-btn" id="flowPlay" aria-label="Play">
             <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
           </button>
           <button class="flow-btn" id="flowStop" aria-label="Pause">
             <svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+          </button>
+          <button class="flow-btn" id="flowNext" aria-label="Próximo">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 3l7 5-7 5V3z"/><rect x="11.5" y="2" width="2.5" height="12" rx="0.5"/></svg>
           </button>
         </div>
       </div>
@@ -3118,6 +3124,27 @@ function stopSequence() {
   document.getElementById('flowPlay').classList.remove('is-playing');
 }
 
+function showStep(i, steps) {
+  clearTimeout(playTimer);
+  clearAll();
+  const next = ((i % steps.length) + steps.length) % steps.length;
+  currentStep = next;
+  const color = '#FFAA00';
+  const sq = steps[next].querySelector('.step-led-square');
+  const num = steps[next].querySelector('.step-num');
+  steps[next].classList.add('is-active');
+  SFX.blip();
+  if (sq) {
+    sq.style.borderColor = color + 'cc';
+    sq.style.background = color + '18';
+    sq.style.boxShadow = `inset 0 0 10px ${color}33, 0 0 10px 3px ${color}44, 0 0 22px 7px ${color}18, 0 1px 0 rgba(255,255,255,0.8)`;
+  }
+  if (num) {
+    num.style.color = color;
+    num.style.textShadow = `0 0 6px ${color}ee, 0 0 14px ${color}88`;
+  }
+}
+
 document.getElementById('flowPlay').addEventListener('click', () => {
   if (isPlaying) return;
   SFX.press();
@@ -3129,6 +3156,18 @@ document.getElementById('flowPlay').addEventListener('click', () => {
 document.getElementById('flowStop').addEventListener('click', () => {
   SFX.press();
   stopSequence();
+});
+
+document.getElementById('flowPrev').addEventListener('click', () => {
+  SFX.press();
+  if (isPlaying) { isPlaying = false; document.getElementById('flowPlay').classList.remove('is-playing'); }
+  showStep(currentStep - 1, getSteps());
+});
+
+document.getElementById('flowNext').addEventListener('click', () => {
+  SFX.press();
+  if (isPlaying) { isPlaying = false; document.getElementById('flowPlay').classList.remove('is-playing'); }
+  showStep(currentStep + 1, getSteps());
 });
 
 /* ── WA / CTA BUTTONS ── */
