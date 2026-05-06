@@ -1411,25 +1411,26 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* ── MEMBER ACCESS BUTTON ── */
+/* ── MEMBER ACCESS BUTTON — mesma família das flags, formato retangular ── */
 .member-btn {
   align-items: center;
   gap: 6px;
   padding: 0 14px;
   height: 34px;
-  border-radius: 4px;
-  background: linear-gradient(145deg, #eaecec, #d6d8d8);
-  border: 1px solid rgba(0,0,0,0.16);
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--chassis-3) 0%, var(--chassis-2) 100%);
+  border: 1px solid rgba(0,0,0,0.2);
   border-bottom: 3px solid rgba(0,0,0,0.22);
   box-shadow:
-    0 4px 0 rgba(0,0,0,0.15),
-    0 5px 10px rgba(0,0,0,0.10),
-    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 3px 0 rgba(0,0,0,0.18),
+    0 5px 9px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,1),
     inset 0 -1px 0 rgba(0,0,0,0.06);
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.05s ease-out;
+  transition: transform 0.06s ease-out, box-shadow 0.06s ease-out, border-bottom-width 0.06s ease-out, opacity 0.06s ease-out;
   position: relative;
+  opacity: 0.78;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   font-weight: 600;
@@ -1441,29 +1442,27 @@ body {
 .member-btn::after {
   content: "";
   position: absolute;
-  top: 4px; left: 50%;
+  top: 3px; left: 50%;
   transform: translateX(-50%);
   width: 50%; height: 4px;
-  background: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.4);
   border-radius: 3px;
-  filter: blur(3px);
+  filter: blur(2.5px);
   pointer-events: none;
 }
 .member-btn:hover {
   transform: translateY(-1px);
-  box-shadow:
-    0 5px 0 rgba(0,0,0,0.15),
-    0 7px 14px rgba(0,0,0,0.13),
-    inset 0 1px 0 rgba(255,255,255,0.95),
-    inset 0 -1px 0 rgba(0,0,0,0.06);
+  opacity: 0.9;
 }
 .member-btn:active {
-  transform: translateY(3px);
+  transform: translateY(2px);
   border-bottom-width: 1px;
   box-shadow:
-    0 1px 0 rgba(0,0,0,0.10),
-    0 2px 4px rgba(0,0,0,0.08),
-    inset 0 1px 3px rgba(0,0,0,0.08);
+    0 1px 0 rgba(0,0,0,0.1),
+    0 1px 3px rgba(0,0,0,0.1),
+    inset 0 1px 3px rgba(0,0,0,0.18),
+    inset 0 -1px 1px rgba(0,0,0,0.05);
+  opacity: 1;
 }
 .member-btn svg {
   width: 13px; height: 13px;
