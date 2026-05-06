@@ -6,7 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A **design handoff bundle** from Claude Design. The files are HTML/CSS/JS prototypes — not production code. The goal is to implement them pixel-perfectly in a real production stack (React, Next.js, etc.).
 
-**Primary design file:** `georgia-landing-april26.html` — read it top to bottom before touching anything else. The other HTML files (`-bundle-src`, `-standalone-src`) are alternate exports of the original design handoff.
+**Primary design file:** `georgia-landing-april26.html` — read it top to bottom before touching anything else. The other HTML files are alternate exports of the original design handoff and should not be edited:
+- `georgia-landing-TV_9-bundle-src.html` — full bundle with inlined assets
+- `georgia-landing-TV_9-standalone-src.html` — standalone export
+- `georgia-landing-standalone HTML.html` — legacy standalone variant
 
 There is no build system, package.json, or test suite. Open `georgia-landing-april26.html` directly in a browser to preview. Deployment is static via Vercel — `vercel.json` rewrites `/` to `/georgia-landing-april26.html`.
 
@@ -71,6 +74,23 @@ Five main concerns, all vanilla ES6:
 - **Holographic sticker:** `hue-rotate`/`brightness`/`saturate` keyframe every 6s over a multi-stop pastel gradient; `mix-blend-mode: overlay` foil layers; `clip-path` corner peel effect.
 - **LED indicators:** `radial-gradient` bulb simulation, `@keyframes led-pulse 2.8s` bright↔dim.
 - **Device chassis:** `::before`/`::after` pseudo-elements for wood flanks; `radial-gradient` bevel at each corner; heavy multi-layer `box-shadow` for depth.
+
+## Static assets
+
+| File | Purpose |
+|---|---|
+| `og-cover.png` | Social sharing image (1200×630), referenced in OG/Twitter meta tags |
+| `wa-qr.jpeg` | Static WhatsApp QR code image (unused at runtime — JS generates the QR dynamically via `qrcode-generator`) |
+| `favicon-light.svg` / `favicon-dark.svg` | System-theme-aware favicons; `favicon-dark.svg` loads when `prefers-color-scheme: dark` |
+
+## Legal text source files
+
+The privacy policy and terms of use modal content lives in the HTML (`#modalOverlay`). The text source files are kept alongside for reference and copy editing:
+
+- `Política de Privacidade.txt` / `Privacy Policy.txt` — privacy policy in PT and EN
+- `Termos de Uso.txt` / `Terms of Use.txt` — terms of use in PT and EN
+
+When updating legal text, edit both the `.txt` source file **and** the corresponding section in `georgia-landing-april26.html`.
 
 ## Implementation notes for production
 
